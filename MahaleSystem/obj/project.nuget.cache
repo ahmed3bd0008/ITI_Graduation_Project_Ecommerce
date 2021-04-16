@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zMkmZ+bDjCJWv2X3gq1aPijZLZ2Zk9MPpRFTSHZ680FAepRaR7/fNuXyNj3t3k2n1bjvdZrDT4NxMC6TmfrMQw==",
+  "dgSpecHash": "ulrGjOzOyCVPcN2JYbIIZeelGlISgbymMNVeJN8xL5QFqOT8JQwviCCV8Z5FckjKjaAVT9fDppwMQ2QFzrwRYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sayed\\Source\\Repos\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+  "projectFilePath": "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sayed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

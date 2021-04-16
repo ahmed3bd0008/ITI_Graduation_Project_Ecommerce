@@ -5803,11 +5803,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sayed\\source\\repos\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+      "projectUniqueName": "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
       "projectName": "MahaleSystem",
-      "projectPath": "C:\\Users\\Sayed\\source\\repos\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+      "projectPath": "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
       "packagesPath": "C:\\Users\\Sayed\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sayed\\source\\repos\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\obj\\",
+      "outputPath": "E:\\ITIProject\\MahaleSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
