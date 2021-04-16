@@ -4,14 +4,16 @@ using MahaleSystem.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MahaleSystem.Migrations
 {
     [DbContext(typeof(ManahelContext))]
-    partial class ManahelContextModelSnapshot : ModelSnapshot
+    [Migration("20210416194534_Add_Identity")]
+    partial class Add_Identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,28 +271,6 @@ namespace MahaleSystem.Migrations
                     b.ToTable("Queues");
                 });
 
-            modelBuilder.Entity("MahaleSystem.Models.UsersManhals", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ManelId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ManelId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UsersManhals");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
@@ -446,23 +426,6 @@ namespace MahaleSystem.Migrations
                         .IsRequired();
 
                     b.Navigation("Khalia");
-                });
-
-            modelBuilder.Entity("MahaleSystem.Models.UsersManhals", b =>
-                {
-                    b.HasOne("MahaleSystem.Models.Manahel", "Manahel")
-                        .WithMany()
-                        .HasForeignKey("ManelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MahaleSystem.Models.Identity.CustomIdentityuser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Manahel");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

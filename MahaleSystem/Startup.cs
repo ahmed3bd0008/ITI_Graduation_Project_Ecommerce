@@ -1,4 +1,5 @@
 using MahaleSystem.Models;
+using MahaleSystem.Models.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,7 @@ namespace MahaleSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddIdentity<CustomIdentityuser, CustomIdentityRole>().AddEntityFrameworkStores<ManahelContext>();
             services.AddDbContext<ManahelContext>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("MyConnection"));

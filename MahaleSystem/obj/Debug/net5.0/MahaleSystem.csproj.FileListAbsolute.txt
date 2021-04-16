@@ -158,3 +158,8 @@ E:\ITIProject\MahaleSystem\obj\Debug\net5.0\MahaleSystem.dll
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\ref\MahaleSystem.dll
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\MahaleSystem.pdb
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\MahaleSystem.genruntimeconfig.cache
+E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
