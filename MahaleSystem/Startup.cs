@@ -1,5 +1,7 @@
 using MahaleSystem.Models;
 using MahaleSystem.Models.Identity;
+using MahaleSystem.Repository.Implementation;
+using MahaleSystem.Repository.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,8 @@ namespace MahaleSystem
             {
                 option.UseSqlServer(Configuration.GetConnectionString("MyConnection"));
             });
+            services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
+            services.AddScoped(typeof(ImanahelRepository), typeof(manahelRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

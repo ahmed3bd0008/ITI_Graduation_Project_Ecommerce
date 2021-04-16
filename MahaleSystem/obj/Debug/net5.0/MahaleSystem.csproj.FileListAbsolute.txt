@@ -79,12 +79,6 @@ C:\Users\Sayed\source\repos\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\De
 C:\Users\Sayed\source\repos\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.pdb
 C:\Users\Sayed\source\repos\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.genruntimeconfig.cache
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\appsettings.Development.json
-E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Views\Shared\assets\plugins\ionicons\collection\collection-manifest.json
-E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Views\Shared\assets\plugins\ionicons\ionicons\data.json
-E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Views\Shared\assets\plugins\jquery-steps\steps.jquery.json
-E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Views\Shared\assets\plugins\jquery.flot\component.json
-E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Views\Shared\assets\plugins\jquery.flot\flot.jquery.json
-E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Views\Shared\assets\plugins\morris.js\bower.travis.json
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\appsettings.json
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\MahaleSystem.exe
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\MahaleSystem.deps.json
@@ -163,3 +157,5 @@ E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Ke
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\_AccountLayout.cshtml.g.cs
