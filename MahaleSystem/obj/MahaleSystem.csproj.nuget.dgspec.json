@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {}
+    "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {}
   },
   "projects": {
-    "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {
+    "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
+        "projectUniqueName": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
         "projectName": "MahaleSystem",
-        "projectPath": "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
-        "packagesPath": "C:\\Users\\Sayed\\.nuget\\packages\\",
-        "outputPath": "E:\\ITIProject\\MahaleSystem\\obj\\",
+        "projectPath": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+        "packagesPath": "C:\\Users\\hp-\\.nuget\\packages\\",
+        "outputPath": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Sayed\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\hp-\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -54,13 +54,17 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.5, )"
+              "version": "[5.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.5, )"
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
             }
           },
           "imports": [
@@ -81,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
