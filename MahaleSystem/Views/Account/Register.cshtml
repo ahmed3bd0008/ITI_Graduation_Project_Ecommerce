@@ -1,0 +1,148 @@
+﻿
+<div class="row mt-4">
+    <div class="col-sm-12 col-md-4 col-xl-3">
+        <a class="modal-effect btn ripple btn-secondary " data-effect="effect-scale" data-toggle="modal" onclick="openAddUser('add users')" >Scale</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table dataTable no-footer dtr-inline" id="example2" role="grid" aria-describedby="example2_info" style="width: 1214px;">
+                                    <thead>
+                                        <tr role="row"><th class="wd-20p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 202px;"
+                                                           aria-label="Name: activate to sort column ascending">Name</th>
+                                        <th class="wd-25p sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 263px;" aria-label="Position: activate to sort column descending" aria-sort="ascending">Position</th>
+                                        <th class="wd-20p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 202px;" aria-label="Office: activate to sort column ascending">Office</th>
+                                        <th class="wd-15p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 141px;" aria-label="data: activate to sort column ascending">data</th>
+                                        <th class="wd-20p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 201px;" aria-label="Salary: activate to sort column ascending">Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row" class="odd">
+                                            <td tabindex="0" class="">Airi Satou</td>
+                                            <td class="sorting_1">Accountant</td>
+                                            <td class="">Tokyo</td>
+                                            <td>3/11/2020</td>
+                                            <td>$162,700</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td tabindex="0" class="">Garrett Winters</td>
+                                            <td class="sorting_1">Accountant</td>
+                                            <td class="">Tokyo</td>
+                                            <td>2/11/2020</td>
+                                            <td>$170,750</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="" tabindex="0">Angelica Ramos</td>
+                                            <td class="sorting_1">Chief Executive Officer (CEO)</td>
+                                            <td class="">London</td>
+                                            <td>4/11/2020</td>
+                                            <td>$1,200,000</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="" tabindex="0">Paul Byrd</td>
+                                            <td class="sorting_1">Chief Financial Officer (CFO)</td>
+                                            <td class="">New York</td>
+                                            <td>64</td>
+                                            <td>$725,000</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="" tabindex="0">Yuri Berry</td>
+                                            <td class="sorting_1">Chief Marketing Officer (CMO)</td>
+                                            <td class="">New York</td>
+                                            <td>40</td>
+                                            <td>$675,000</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="" tabindex="0">Fiona Green</td>
+                                            <td class="sorting_1">Chief Operating Officer (COO)</td>
+                                            <td class="">San Francisco</td>
+                                            <td>48</td>
+                                            <td>$850,000</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="" tabindex="0">Donna Snider</td>
+                                            <td class="sorting_1">Customer Support</td>
+                                            <td class="">New York</td>
+                                            <td>27</td>
+                                            <td>$112,000</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="" tabindex="0">Serge Baldwin</td>
+                                            <td class="sorting_1">Data Coordinator</td>
+                                            <td class="">Singapore</td>
+                                            <td>64</td>
+                                            <td>$138,575</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="" tabindex="0">Jonas Alexander</td>
+                                            <td class="sorting_1">Developer</td>
+                                            <td class="">San Francisco</td>
+                                            <td>30</td>
+                                            <td>$86,500</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="" tabindex="0">Thor Walton</td>
+                                            <td class="sorting_1">Developer</td>
+                                            <td class="">New York</td>
+                                            <td>61</td>
+                                            <td>$98,540</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="" tabindex="0">Thor Walton</td>
+                                            <td class="sorting_1">Developer</td>
+                                            <td class="">New York</td>
+                                            <td>61</td>
+                                            <td>$98,540</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Basic modal -->
+<div class="modal" id="addUser">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Basic Modal</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <h6>Modal Body</h6>
+                    <p>Nemo enim ipsam voluptatem quia v</p>
+                    <button class="btn ripple btn-primary" type="button">Save changes</button>
+                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Basic modal -->
+<script>
+    openAddUser = (title)=>
+    {
+        $.ajax(
+            {
+                type:'get',
+                url:'AddUser',
+                success: function (res)
+                {
+                    $('#addUser .modal-body').html(res);
+                    $('#addUser .modal-title').html(title);
+                    $('#addUser').modal("show");
+                }
+            });
+        alert("asd");
+    }
+</script>

@@ -36,6 +36,7 @@ namespace MahaleSystem
             });
             services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
             services.AddScoped(typeof(ImanahelRepository), typeof(manahelRepository));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

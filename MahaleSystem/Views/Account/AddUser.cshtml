@@ -1,0 +1,65 @@
+﻿@{
+    
+}
+<link href="~/assets/plugins/select2/css/select2.min.css" rel="stylesheet">
+
+<!--Mutipleselect css-->
+<link rel="stylesheet" href="~/assets/plugins/multipleselect/multiple-select-rtl.css">
+<div class="card custom-card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h4 class="text-center">Signin to Your Account</h4>
+                <form>
+                    <div class="form-group text-right">
+                        <label>Email</label>
+                        <input class="form-control" placeholder="Enter your ‘ User Name" type="text">
+                    </div>
+                    <div class="form-group text-right">
+                        <label>Password</label>
+                        <input class="form-control" placeholder="Enter your password" type="password">
+                    </div>
+                    <div class="form-group text-right">
+                        <label>Confirm  Password</label>
+                        <input class="form-control" placeholder="Enter your password" type="password">
+                    </div>
+                    <div class="form-group">
+
+                        <p class="mg-b-10">Chooce Manahale</p>
+                        <select class="form-control select2" multiple="multiple">
+                            <option selected value="Firefox">
+                                Firefox
+                            </option>
+                            <option value="Chrome">
+                                Chrome
+                            </option>
+                            <option value="Safari">
+                                Safari
+                            </option>
+                            <option value="Opera">
+                                Opera
+                            </option>
+                            <option value="Internet Explorer">
+                                Internet Explorer
+                            </option>
+                        </select>
+                    </div>
+                    <button class="btn ripple btn-main-primary btn-block">Sign In</button>
+                </form>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card custom-card">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--MutipleSelect js-->
+<script src="~/assets/plugins/multipleselect/multiple-select.js"></script>
+<script src="~/assets/plugins/multipleselect/multi-select.js"></script>

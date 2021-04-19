@@ -159,3 +159,5 @@ E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.d
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\_AccountLayout.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\AddUser.cshtml.g.cs
