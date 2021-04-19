@@ -24,3 +24,11 @@ namespace MahaleSystem
                 });
     }
 }
+/*
+ List<UsersManhals> manhalsID = contextUser.GetAllBy(a => a.UserId == "1"Account_ID);
+List<Manahel> manahels = new List<Manahel>();
+foreach (var item in manhalsID)
+{
+    manahels.Add(context.GetElement(item.ManelId));
+}
+* */
