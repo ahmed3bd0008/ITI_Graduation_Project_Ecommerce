@@ -32,29 +32,31 @@ namespace MahaleSystem.Controllers
             ViewData["IsSuperAdmin"] = IsSuperAdmin;
             return View(context1.GetAllManahelsTest());
         }
-        public ActionResult AdminIndex(/*string Account_ID*/)
+        public ActionResult AdminIndex(string user_ID)
         {
-            List<UsersManhals> manhalsID = contextuser.GetAllBy(a => a.UserId == "1"/*Account_ID*/);
+            List<UsersManhals> manhalsID = contextuser.GetAllBy(a => a.UserId == user_ID);
             List<Manahel> manahels = new List<Manahel>();
             foreach (var item in manhalsID)
             {
                 manahels.Add(context1.GetElement(item.ManelId));
             }
-            ViewData["Manahel"] = context1.GetAllManahelsMenuTest();
-            return View(context1.GetAllManahelsTest());
+            IsSuperAdmin = false;
+            ViewData["IsSuperAdmin"] = IsSuperAdmin;
+            ViewData["Manahel"] = manahels;//context1.GetAllManahelsMenuTest();
+            return View(manahels);
         }
 
-        public ActionResult SuperAdminIndex(/*string Account_ID*/)
+        public ActionResult SuperAdminIndex()
         {
             IsSuperAdmin = true; ViewData["IsSuperAdmin"] = IsSuperAdmin;
-            List<UsersManhals> manhalsID = contextuser.GetAllBy(a => a.UserId == "1"/*Account_ID*/);
+            List<UsersManhals> manhalsID = contextuser.GetAll();
             List<Manahel> manahels = new List<Manahel>();
             foreach (var item in manhalsID)
             {
                 manahels.Add(context1.GetElement(item.ManelId));
             }
-            ViewData["Manahel"] = context1.GetAllManahelsMenuTest();
-            return View(context1.GetAllManahelsTest());
+            ViewData["Manahel"] = manahels;// context1.GetAllManahelsMenuTest();
+            return View(manahels);
         }
 
         public ActionResult DetailsAll()

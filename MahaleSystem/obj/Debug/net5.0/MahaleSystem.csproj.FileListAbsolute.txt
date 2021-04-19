@@ -322,3 +322,5 @@ D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\DetailsAll.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\_LayoutManhal.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\_SideMenuManhal.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\AdminIndex.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\SuperAdminIndex.cshtml.g.cs
