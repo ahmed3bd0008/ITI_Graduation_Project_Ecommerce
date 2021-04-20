@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {}
+    "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {}
   },
   "projects": {
-    "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {
+    "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
+        "projectUniqueName": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
         "projectName": "MahaleSystem",
-        "projectPath": "E:\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
-        "packagesPath": "C:\\Users\\Sayed\\.nuget\\packages\\",
-        "outputPath": "E:\\ITIProject\\MahaleSystem\\obj\\",
+        "projectPath": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
+        "packagesPath": "C:\\Users\\doaar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Sayed\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\doaar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
