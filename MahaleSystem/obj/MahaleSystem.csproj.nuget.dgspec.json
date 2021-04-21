@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {}
   },
   "projects": {
@@ -20,6 +21,23 @@
           "C:\\Users\\hp-\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+    "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
+        "projectName": "MahaleSystem",
+        "projectPath": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
+        "packagesPath": "C:\\Users\\doaar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\doaar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> 21db53cb2f7bff26f5c13c24541eaf02ca2ebaa5
         ],
         "originalTargetFrameworks": [
           "net5.0"
