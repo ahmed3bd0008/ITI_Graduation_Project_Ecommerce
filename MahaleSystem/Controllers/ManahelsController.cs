@@ -239,7 +239,7 @@ namespace MahaleSystem.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> AddImage(AddImageVM imageVM)
+        public ActionResult AddImage(AddImageVM imageVM)
         {
             string uniqueFileName = null;
 
