@@ -53,7 +53,7 @@ namespace MahaleSystem.Repository.Implementation
 
         public int Savechange()
         {
-          return  _context.SaveChanges();
+            return  _context.SaveChanges();
         }
 
         public T Updata(T item)

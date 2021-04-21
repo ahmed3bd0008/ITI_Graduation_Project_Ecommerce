@@ -25,17 +25,23 @@ namespace MahaleSystem.Controllers
                 lst.Add(item.UserName);
             }
             lst.Add("SuperAdmin");
-            
+        }
+        //public AccountController()
+        //{
+          
+        //}
+        public IActionResult login()
+        {
+            return View();
         }
         [HttpGet]
-        public ActionResult login2()
+        public IActionResult login2()
         {
-            //UserName
             ViewData["Users"] = new SelectList(lst);
             return View();
         }
         [HttpPost]
-        public ActionResult login2(string UserName)
+        public IActionResult login2(string UserName)
         {
             if (UserName == "SuperAdmin")
             {
@@ -44,6 +50,5 @@ namespace MahaleSystem.Controllers
             string Uid = tuples.Where(a => a.Item2 == UserName).First().Item1;
             return RedirectToAction("AdminIndex", "Manahels", new { user_ID = Uid });
         }
-    
     }
 }

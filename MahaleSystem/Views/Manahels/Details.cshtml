@@ -1,56 +1,154 @@
-﻿@model MahaleSystem.Models.Manahel
+﻿@model MahaleSystem.ViewModel.Manahel.ManhalDetailsVM
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_LayoutManhal.cshtml";
 }
 
 <h1>Details</h1>
 
+<!-- Row Vertical Scriollable Data Table Responsive-->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div>
+                    <h6 class="card-title mb-1">Vertical Scrollable Data Table</h6>
+                    <p class="text-muted card-sub-title">Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.</p>
+                </div>
+                <div class="table-responsive">
+                    <table id="example3" class="table table-striped table-bordered text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Ssn)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().KhaliaLevel)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().KhaliaType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().PraweezCount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Wood)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Queues.QueueStatus)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Queues.DateFertilization)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.khalias)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ssn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KhaliaLevel)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KhaliaType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PraweezCount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Wood)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
+                                    </td>
+                                    <td>
+                                        @if (item.Queues.QueueStatus == "Fertilized")
+                                        {
+                                            string date = item.Queues.DateFertilization.Value.ToShortDateString();
+                                            @date
+                                        }
+                                        
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card-columns">
+    @foreach (var item in Model.imagesManahels)
+    {
+        <div class="card">
+            <div class="card-body text-center">
+                <img class="card-img" src="~/images/@item.ImagesString" />
+                <a asp-action="DeleteImage" asp-route-idImg="@item.Id" class="card-action">Delete</a>
+            </div>
+        </div>
+    }
+    <div class="card">
+        <div class="card-body text-center">
+            @Html.Partial("_AddManhalImage", ViewData["ManhalImage"]);
+        </div>
+    </div>
+</div>
+
+
+
+<!-- End Row -->
 <div class="container mr-2">
     <h4>Manahel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ssn)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.Ssn)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ssn)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.Ssn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NickName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.NickName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NickName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.NickName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LocationName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.LocationName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LocationName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.LocationName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FlowerName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.FlowerName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FlowerName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.FlowerName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateCreated)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.DateCreated)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateCreated)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.DateCreated)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateUpdated)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.DateUpdated)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateUpdated)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.DateUpdated)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.manhal.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
 

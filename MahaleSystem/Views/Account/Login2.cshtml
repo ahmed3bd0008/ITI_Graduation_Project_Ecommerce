@@ -2,7 +2,7 @@
 @{ 
 }
 <div class="row container">
-    <form asp-action="login" class="col-10" asp-controller="Account">
+    <form asp-action="login2" class="col-10" asp-controller="Account">
         <h3>Login With</h3>
         <label class="form-label">Select Admin: <span class="tx-danger">*</span></label>
         <select name="UserName" class="form-control select2" asp-items="ViewBag.Users"></select>
@@ -36,12 +36,9 @@
                         <label>Password</label>
                         <input class="form-control" placeholder="Enter your password" type="password">
                     </div>
-                    <button class="btn ripple btn-main-primary btn-block">Sign In</button>
+                    <button class="btn ripple btn-main-primary btn-block">Add user</button>
                 </form>
-                <div class="mt-3 text-center">
-                    <p class="mb-1"><a href="">Forgot password?</a></p>
-                    <p class="mb-0">Don't have an account? <a href="signup.html">Create an Account</a></p>
-                </div>
+                
             </div>
         </div>
     </div>

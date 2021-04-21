@@ -32,18 +32,38 @@ namespace MahaleSystem.Repository.Implementation
             entities = context.Set<Manahel>();
         }
 
-        public bool Is_SSN_Exist(string ssn,string AccountID)
+        public async Task<bool> Is_SSN_Exist(string ssn,string AccountID)
         {
-            var userManhal = context.UsersManhals.Where(a => a.UserId == AccountID);
+            var userManhal = await context.UsersManhals.Where(a => a.UserId == AccountID).ToListAsync();
             foreach (var item in userManhal)
             {
                 var manahl = entities.Where(a => a.Id == item.ManelId).Where(b => b.Ssn == ssn).FirstOrDefault();
                 if (manahl != null)
-                    return false;
+                    return true;
             }
-            return true;
+            return false;
+        }
+        public int AddImage(ImagesManahel item)
+        {
+            context.ImagesManahels.Add(item);
+            return context.SaveChanges();
         }
 
+        public List<Khalias> GetKhaliases(int id_Manahal)
+        {
+            Manahel manahel = entities.Find(id_Manahal);
+            List<Khalias> khaliases = new List<Khalias>();
+            if (manahel != null)
+            {
+                khaliases = context.khaliases.Where(a => a.ManhalId == id_Manahal)
+                                              .Include(x => x.Queues).ToList();
+            }
+            return khaliases;
+        }
+        public List<ImagesManahel> GetImages(int id_Manahal)
+        {
+            return context.ImagesManahels.Where(a => a.ManahelId == id_Manahal).ToList();
+        }
         public List<Manahel> GetAllManahelsTest()
         {
             mansMenu.AddRange(manahels);

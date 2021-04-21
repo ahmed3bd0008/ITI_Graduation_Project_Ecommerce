@@ -14,5 +14,15 @@ namespace MahaleSystem.Repository.Implementation
         {
             context = _context;
         }
+        public List<Tuple<string,string>> GetUsers()
+        {
+            var res = (from x in context.Users select new { x.Id, x.UserName }).ToList();
+            List<Tuple<string, string>> tuples = new List<Tuple<string, string>>();
+            foreach (var item in res)
+            {
+                tuples.Add(new Tuple<string, string>(item.Id, item.UserName));
+            }
+            return tuples;
+        }
     }
 }
