@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MahaleSystem.Repository.Interface
 {
-    interface IProductRepository: IGenaricRepository<Product>
+  public   interface IProductRepository: IGenaricRepository<Product>
     {
+       
     }
 }

@@ -336,3 +336,4 @@ C:\Users\doaar\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Ma
 C:\Users\doaar\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\ref\MahaleSystem.dll
 C:\Users\doaar\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.pdb
 C:\Users\doaar\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.genruntimeconfig.cache
+C:\Users\doaar\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs

@@ -14,5 +14,7 @@ namespace MahaleSystem.Repository.Implementation
         {
             context = _context;
         }
+
+       
     }
 }
