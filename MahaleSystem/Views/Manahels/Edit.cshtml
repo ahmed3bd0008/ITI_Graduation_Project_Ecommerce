@@ -3,57 +3,55 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>Manahel</h4>
-<hr />
+<!-- Row -->
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Ssn" class="control-label"></label>
-                <input asp-for="Ssn" class="form-control" />
-                <span asp-validation-for="Ssn" class="text-danger"></span>
+    <div class="col-lg-12 col-md-12">
+        <div class="card custom-card">
+            <div class="card-body">
+                <div>
+                    <h1 class="container">Edit Manahal</h1>
+                    <p class="text-muted card-sub-title"></p>
+                </div>
+                <form asp-action="Edit" asp-controller="Manahels" method="post">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label class="form-label">SSN:</label>
+                                <input class="form-control" asp-for="Ssn" readonly  required="" type="text">
+                                <span asp-validation-for="Ssn" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label class="form-label">Manahal Name:</label>
+                                <input class="form-control" asp-for="NickName" required="" type="text">
+                                <span asp-validation-for="NickName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label class="form-label">Flower Name:</label>
+                                <input class="form-control" asp-for="FlowerName" required="" type="text">
+                                <span asp-validation-for="FlowerName" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-6 form-group">
+                                <label class="form-label">Location Name:</label>
+                                <input class="form-control" asp-for="LocationName" required="" type="text">
+                                <span asp-validation-for="LocationName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 form-group">
+                                <label class="form-label">Date Created:</label>
+                                <input class="form-control" asp-for="DateCreated" required="" type="date">
+                                <span asp-validation-for="DateCreated" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn ripple btn-main-primary btn-block" type="submit">Save Changes</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="NickName" class="control-label"></label>
-                <input asp-for="NickName" class="form-control" />
-                <span asp-validation-for="NickName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LocationName" class="control-label"></label>
-                <input asp-for="LocationName" class="form-control" />
-                <span asp-validation-for="LocationName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FlowerName" class="control-label"></label>
-                <input asp-for="FlowerName" class="form-control" />
-                <span asp-validation-for="FlowerName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateUpdated" class="control-label"></label>
-                <input asp-for="DateUpdated" class="form-control" />
-                <span asp-validation-for="DateUpdated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

@@ -7305,17 +7305,12 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\hp-\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
-=======
-    "C:\\Users\\doaar\\.nuget\\packages\\": {}
->>>>>>> 21db53cb2f7bff26f5c13c24541eaf02ca2ebaa5
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
       "projectName": "MahaleSystem",
       "projectPath": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
@@ -7329,17 +7324,6 @@
         "C:\\Users\\hp-\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
-=======
-      "projectUniqueName": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
-      "projectName": "MahaleSystem",
-      "projectPath": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\MahaleSystem.csproj",
-      "packagesPath": "C:\\Users\\doaar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\doaar\\ITIProject\\MahaleSystem\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\doaar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> 21db53cb2f7bff26f5c13c24541eaf02ca2ebaa5
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7408,5 +7392,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

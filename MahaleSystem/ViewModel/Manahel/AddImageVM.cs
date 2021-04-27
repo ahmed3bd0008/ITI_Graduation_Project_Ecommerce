@@ -11,7 +11,7 @@ namespace MahaleSystem.ViewModel.Manahel
 {
     public class AddImageVM
     {
-        public int? id { get; set; }
+        public int id { get; set; }
         
         [Display(Name="Image File"),Required]
         public IFormFile imageFile { get; set; }
