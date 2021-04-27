@@ -1,14 +1,19 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {}
+=======
+    "C:\\Users\\doaar\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {}
+>>>>>>> 2755e01710deeba70046d93ac40e807f70b269e7
   },
   "projects": {
-    "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {
+    "C:\\Users\\doaar\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+        "projectUniqueName": "C:\\Users\\doaar\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
         "projectName": "MahaleSystem",
+<<<<<<< HEAD
         "projectPath": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
         "packagesPath": "C:\\Users\\hp-\\.nuget\\packages\\",
         "outputPath": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\obj\\",
@@ -20,6 +25,15 @@
           "C:\\Users\\hp-\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+=======
+        "projectPath": "C:\\Users\\doaar\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+        "packagesPath": "C:\\Users\\doaar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\doaar\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\doaar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+>>>>>>> 2755e01710deeba70046d93ac40e807f70b269e7
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -85,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

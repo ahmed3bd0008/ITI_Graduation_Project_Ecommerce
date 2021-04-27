@@ -63,7 +63,7 @@ namespace MahaleSystem.Controllers
         }
         public ActionResult DetailsAll()
         {
-            //ViewData["Manahel"] = context1.GetAllManahelsMenuTest();
+            //ViewData["Manahuel"] = context1.GetAllManahelsMenuTest();
             List<InfoVM> infoVm = new List<InfoVM>()
             {
                 new InfoVM(){name="Number of Manahel",value=10 },
