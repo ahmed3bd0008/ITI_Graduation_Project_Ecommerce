@@ -15,6 +15,6 @@ namespace MahaleSystem.Models
         public string ProductAmount { get; set; }
         [ForeignKey("Manhal")]
         public int? ManhalId { get; set; }
-        public virtual Mnahel Manhal { get; set; }
+        public virtual Manahel Manhal { get; set; }
     }
 }
