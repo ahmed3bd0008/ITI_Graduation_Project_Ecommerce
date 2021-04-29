@@ -3,7 +3,10 @@ using MahaleSystem.ViewModel;
 using MahaleSystem.ViewModel.Account;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using MahaleSystem.Models;
+using MahaleSystem.Repository.Implementation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,40 +22,45 @@ namespace MahaleSystem.Controllers
         private readonly IUploadFile _uploadFile;
         private readonly SignInManager<CustomIdentityuser> _signInManager;
 
-        public AccountController(UserManager<CustomIdentityuser>userManager,
-            RoleManager<CustomIdentityRole>roleManager, SignInManager<CustomIdentityuser> signInManager,
-          IUploadFile  uploadFile )
+        public AccountController(UserManager<CustomIdentityuser> userManager,
+            RoleManager<CustomIdentityRole> roleManager, SignInManager<CustomIdentityuser> signInManager,
+          IUploadFile uploadFile)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _uploadFile = uploadFile;
             _signInManager = signInManager;
+
+
         }
+        //public AccountController()
+        //{
+
+        //}
         public IActionResult login()
         {
             return View();
         }
-        public async Task<  IActionResult> Register()
+        public async Task<IActionResult> Register()
         {
-            var users =  _userManager.Users.ToList();
+            var users = _userManager.Users.ToList();
             String Role;
             DisplayUserViewModel model = new() { users = users };
             foreach (var item in users)
             {
-                Role =( await _userManager.GetRolesAsync(item)).FirstOrDefault();
+                Role = (await _userManager.GetRolesAsync(item)).FirstOrDefault();
                 model.Roles.Add(Role);
             }
             return View(model);
         }
-        
-      [HttpGet]
+
+        [HttpGet]
         public IActionResult AddUser()
         {
             return View();
         }
-      
         [HttpPost]
-        public async Task< IActionResult> AddUser(AddUserViewModel model)
+        public async Task<IActionResult> AddUser(AddUserViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +72,7 @@ namespace MahaleSystem.Controllers
                         UserName = model.Name,
                         PhoneNumber = model.Phone
                     };
-                    if (model.formFile!=null)
+                    if (model.formFile != null)
                     {
                         user.Image = _uploadFile.ProcessorUploadFile(model);
                     }
@@ -75,8 +83,8 @@ namespace MahaleSystem.Controllers
                     var result = await _userManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                      await  _signInManager.SignInAsync(user, isPersistent: false);
-                    
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
                     }
                     foreach (var error in result.Errors)
                     {
@@ -85,7 +93,7 @@ namespace MahaleSystem.Controllers
                     }
                 }
             }
-            return View ();
+            return View();
         }
         [HttpGet]
         public IActionResult Login()
@@ -93,7 +101,7 @@ namespace MahaleSystem.Controllers
             return View();
         }
         [HttpPost]
-        public async Task <IActionResult> Login(LogInUserViewModel model,String ReturnUrl)
+        public async Task<IActionResult> Login(LogInUserViewModel model, String ReturnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -109,9 +117,19 @@ namespace MahaleSystem.Controllers
                 ModelState.AddModelError(string.Empty, "invaild");
             }
             return View();
+            //    [HttpPost]
+            //    public IActionResult login2(string UserName)
+            //    {
+            //        if (UserName == "SuperAdmin")
+            //        {
+            //            return RedirectToAction("SuperAdminIndex", "Manahels");
+            //        }
+            //        string Uid = tuples.Where(a => a.Item2 == UserName).First().Item1;
+            //        return RedirectToAction("AdminIndex", "Manahels", new { user_ID = Uid });
+            //    }
+            //}
         }
     }
-
     
 }
 

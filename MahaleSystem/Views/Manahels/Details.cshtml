@@ -179,8 +179,18 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Wood)
                                     </td>
+                                    
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
+                                        @{ try
+                                            {
+                                            @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
+                                            }
+                                            catch(Exception ex)
+                {
+
+                }
+                                        }
+
                                     </td>
                                     <td>
                                         @{try

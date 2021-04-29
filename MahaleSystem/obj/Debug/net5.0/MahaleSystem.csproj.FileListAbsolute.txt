@@ -157,7 +157,6 @@ E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Ke
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 E:\ITIProject\MahaleSystem\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
-E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\_AccountLayout.cshtml.g.cs
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\AddUser.cshtml.g.cs
@@ -247,3 +246,16 @@ E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Administration\ShowMange
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Administration\GetAllClaims.cshtml.g.cs
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Administration\ChangeuserName.cshtml.g.cs
 E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Administration\ChangeUserPassword.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\AddKhalia.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\AdminIndex.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\EditKhalia.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\SuperAdminIndex.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Manahels\_AddManhalImage.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Create.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\Components\DisplayAllStatistics\DisplayAllStatistics.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\Components\DisplayStatistics\DisplayStatistics.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\Components\GetManahal\GetManahal.cshtml.g.cs
+E:\ITIProject\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
