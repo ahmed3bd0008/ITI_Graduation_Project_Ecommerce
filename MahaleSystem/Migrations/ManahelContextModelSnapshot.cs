@@ -44,6 +44,20 @@ namespace MahaleSystem.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "41fba480-48ff-411e-b3d6-8b08e083bb38",
+                            ConcurrencyStamp = "3edce971-6d1e-481a-8b82-cf3e52b05c6a",
+                            Name = "SuperAdmin"
+                        },
+                        new
+                        {
+                            Id = "ec035abe-a3b6-464f-ae37-fea066e0e251",
+                            ConcurrencyStamp = "9e05bbbd-7996-4b51-bdc6-abd925abe840",
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("MahaleSystem.Models.Identity.CustomIdentityuser", b =>
@@ -64,6 +78,9 @@ namespace MahaleSystem.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

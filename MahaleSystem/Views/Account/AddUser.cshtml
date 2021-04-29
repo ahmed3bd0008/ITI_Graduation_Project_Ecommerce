@@ -1,6 +1,7 @@
 ﻿@{
-    
+   
 }
+@model AddUserViewModel
 <link href="~/assets/plugins/select2/css/select2.min.css" rel="stylesheet">
 
 <!--Mutipleselect css-->
@@ -10,19 +11,33 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
-                <h4 class="text-center">Signin to Your Account</h4>
-                <form>
+                <h4 class="text-center">add user</h4>
+                <form method="post" asp-controller="Account" asp-action="AddUser"  enctype="multipart/form-data">
+                    <div class="text-danger" asp-validation-summary="All"></div>
                     <div class="form-group text-right">
                         <label>Email</label>
-                        <input class="form-control" placeholder="Enter your ‘ User Name" type="text">
+                        <input class="form-control" placeholder="Enter your ‘ User Name" type="text" asp-for="Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group text-right">
+                        <label>Phone</label>
+                        <input class="form-control" placeholder="Enter your ‘ User Name" type="text" asp-for="Phone">
+                        <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
                     <div class="form-group text-right">
                         <label>Password</label>
-                        <input class="form-control" placeholder="Enter your password" type="password">
+                        <input class="form-control" placeholder="Enter your password" type="password" asp-for="Password">
+                        <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
                     <div class="form-group text-right">
                         <label>Confirm  Password</label>
-                        <input class="form-control" placeholder="Enter your password" type="password">
+                        <input class="form-control" placeholder="Enter your password" type="password" asp-for="ConfirmPassword">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group text-right">
+                        <label>Confirm  Password</label>
+                        <input class="form-control" placeholder="Enter your password" type="file" asp-for="formFile">
+                        <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
                     <div class="form-group">
 
@@ -45,7 +60,7 @@
                             </option>
                         </select>
                     </div>
-                    <button class="btn ripple btn-main-primary btn-block">Sign In</button>
+                    <button type="submit" class="btn ripple btn-main-primary btn-block">Add User</button>
                 </form>
             </div>
             <div class="col-1"></div>

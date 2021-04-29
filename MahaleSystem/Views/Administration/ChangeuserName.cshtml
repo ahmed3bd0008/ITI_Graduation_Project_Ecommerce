@@ -1,0 +1,23 @@
+﻿@model ChangePasswordViewModel
+@{
+    Layout = null;
+}
+
+<div class="modal-header">
+    <h6 class="modal-title">Change User name</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+
+    <form class="text-center" method="post" asp-action="ChangeuserName" asp-controller="Administration">
+        <div class="form-group">
+            <input type="text" value="@Model.UserName"  class="form-control"/>
+            <input type="hidden" asp-for="@Model.UserId" />
+        </div>
+        <input class="btn ripple btn-primary" value=" Save changes" type="submit" />
+        <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+    </form>
+
+</div>
+<div class="modal-footer">
+
+</div>

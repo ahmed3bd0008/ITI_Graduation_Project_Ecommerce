@@ -12,6 +12,11 @@ namespace MahaleSystem.Models
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Initailizer();
+        }
         public DbSet<ImagesManahel> ImagesManahels { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Khalias> khaliases { get; set; }
@@ -20,4 +25,5 @@ namespace MahaleSystem.Models
         public DbSet<ImagesProduct> ImagesProducts { get; set; }
         public DbSet<UsersManhals> UsersManhals { get; set; }
     }
+    
 }
