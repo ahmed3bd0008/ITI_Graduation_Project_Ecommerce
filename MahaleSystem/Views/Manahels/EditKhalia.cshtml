@@ -1,0 +1,114 @@
+﻿@model MahaleSystem.Models.Khalias
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Edit Khalia </h1>
+<hr />
+
+<div class="row">
+    <div class="col-sm-12 col-xl-12 col-lg-12">
+        <div class="card custom-card">
+            <div class="card-body dash1">
+                <div class="d-flex">
+                    <p class="mb-1 tx-inverse">The general average of the Khalia</p>
+                    <div class="mr-auto">
+                        <i class="fas fa-chart-line fs-20 text-primary"></i>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="dash-25">@ViewBag.Average%</h3>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-warning" style="width:@ViewBag.Average%"></div>
+                </div>
+                @*<div class="progress mb-1">
+                        <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="@Model.Item2" class="progress-bar progress-bar-xs wd-70p bg-warning" role="progressbar"></div>
+                    </div>*@
+                <div class="expansion-label d-flex">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="width:90%">
+    <form asp-action="EditKhalia">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="row" style="margin:15px;">
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="Ssn"></label>
+                <input asp-for="Ssn" name="Ssn" readonly class="form-control" />
+                <span asp-validation-for="Ssn" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="KhaliaLevel"></label>
+                <select asp-for="KhaliaLevel" name="KhaliaLevel" class="form-control" asp-items="ViewBag.KhaliaLevel"></select>
+                <span asp-validation-for="KhaliaLevel" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="KhaliaType"></label>
+                <select asp-for="KhaliaType" name="KhaliaType" class="form-control" asp-items="ViewBag.KhaliaType"></select>
+                <span asp-validation-for="KhaliaType" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin:15px">
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="Wood" class="control-label"></label>
+                <select asp-for="Wood" name="Wood" class="form-control" asp-items="ViewBag.woodType"></select>
+                <span asp-validation-for="Wood" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="PraweezCount" class="control-label"></label>
+                <input asp-for="PraweezCount" name="PraweezCount" class="form-control" />
+                <span asp-validation-for="PraweezCount" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" name="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input type="hidden" name="ManhalId" asp-for="ManhalId" />
+        <input type="hidden" name="Id" asp-for="Id" />
+
+        <div class="row container">
+            <input type="submit" value="Save Changes Khalia" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
+        </div>
+    </form>
+
+    <form asp-action="EditQueue">
+        <div class="row" style="margin:15px">
+            <div class="col-sm-6 col-xl-6 col-lg-6">
+                <label asp-for="Queues.QueueStatus" class="control-label"></label>
+                <select asp-for="Queues.QueueStatus" name="QueueStatus" class="form-control" asp-items="ViewBag.QueueStatus"></select>
+                <span asp-validation-for="Queues.QueueStatus" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-6 col-lg-6">
+                <label asp-for="Queues.DateFertilization" class="control-label"></label>
+                <input class="form-control" asp-for="Queues.DateFertilization" name="DateFertilization" placeholder="Enter Date Created" required type="date">
+                <span asp-validation-for="Queues.DateFertilization" class="text-danger"></span>
+            </div>
+        </div>
+        <input type="hidden" name="Id" asp-for="Queues.Id" />
+        <input type="hidden" name="KhaliaId" asp-for="Id" />
+        <div class="row container">
+            <input type="submit" value="Save Changes Queue" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
+        </div>
+    </form>
+</div>
+
+<br />
+<br />
+<div class="container row">
+    <a asp-action="DeleteKhalia" asp-controller="Manahels" asp-route-id="@Model.Id" class="btn btn-danger col-10 offset-2">
+        Delete this Khalia
+    </a>
+</div>
+
+<br />
+<div class="container">
+    <a asp-action="Details" asp-controller="Manahels" asp-route-id="@Model.ManhalId">Back to list</a>
+</div>

@@ -1,4 +1,22 @@
-﻿@{ 
+﻿
+@{ 
+}
+<div class="row container">
+    <form asp-action="login2" class="col-10" asp-controller="Account">
+        <h3>Login With</h3>
+        <label class="form-label">Select Admin: <span class="tx-danger">*</span></label>
+        <select name="UserName" class="form-control select2" asp-items="ViewBag.Users"></select>
+        @*<p class="mg-b-10">Single Select with Search</p>*@
+        
+        @*<select name="UserName">
+            @foreach (var item in ViewBag.Users as List<Tuple<string,string>>)
+            {
+                <option value="@item.Item1">@item.Item2</option>
+            }
+        </select>*@
+        <button type="submit" class="btn btn-primary mt-1 w-50">Login</button>
+    </form>
+</div>
     Layout = "_AccountLayout.cshtml";
 }
 @model LogInUserViewModel

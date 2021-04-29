@@ -22,14 +22,21 @@
             <li class="nav-label">Manhale System</li>
             <li class="nav-item">
                 <a class="nav-link with-sub" href=""><i class=" fe fe-alert-octagon"></i><span class="sidemenu-label">Manhale mangment </span></a>
-                <ul class="nav-sub">
-                    @foreach (var item in ViewBag.Manahel as List<Manahel>)
+                
+                <ul class="nav-sub" id="displayAllManhal">
+                    @await Component.InvokeAsync("GetManahal");
+                    @*@foreach (var item in ViewBag.Manahel as List<Manahel>)
                     {
                         <li class="nav-sub-item">
                             <a class="nav-sub-link" asp-action="Details" asp-controller="Manahels" asp-route-id="@item.Id">@item.NickName</a>
                         </li>
-                    }
+                    }*@
                 </ul>
+                @*<script>
+                    $.get('@Url.Action("_GetManhal","Manahels")', { id:1 }, function (content) {
+                        $("#displayAllManhal").html(content);
+                    })
+                </script>*@
             </li>
             <li class="nav-label">Products</li>
 

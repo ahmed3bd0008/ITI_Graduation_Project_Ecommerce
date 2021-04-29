@@ -68,7 +68,7 @@ namespace MahaleSystem
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Manahels}/{action=Index}/{id?}");
+                    pattern: "{controller=Manahels}/{action=SuperAdminIndex}/{id?}");
             });
         }
     }

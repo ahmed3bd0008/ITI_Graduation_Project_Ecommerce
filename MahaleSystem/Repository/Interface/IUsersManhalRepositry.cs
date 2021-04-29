@@ -9,6 +9,6 @@ namespace MahaleSystem.Repository.Interface
 {
     public interface IUsersManhalRepositry:IGenaricRepository<UsersManhals>
     {
-
+        public List<Tuple<string, string>> GetUsers();
     }
 }

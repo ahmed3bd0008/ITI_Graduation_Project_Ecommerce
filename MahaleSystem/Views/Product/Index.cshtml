@@ -1,8 +1,7 @@
-﻿@model IEnumerable<MahaleSystem.Models.Manahel>
+﻿@model IEnumerable<MahaleSystem.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutManhal.cshtml";
 }
 
 <h1>Index</h1>
@@ -20,22 +19,26 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Ssn)
+                                    @Html.DisplayNameFor(model => model.Id)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.NickName)
+                                    @Html.DisplayNameFor(model => model.ProductAmount)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.LocationName)
+                                    @Html.DisplayNameFor(model => model.Manhal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ManhalId)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.FlowerName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.DateCreated)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DateUpdated)
+                                    @Html.DisplayNameFor(model => model.DatePick)
                                 </th>
                                 <th></th>
                             </tr>
@@ -45,22 +48,25 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Ssn)
+                                        @Html.DisplayFor(modelItem => item.Id)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.NickName)
+                                        @Html.DisplayFor(modelItem => item.ProductName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.LocationName)
+                                        @Html.DisplayFor(modelItem => item.ProductAmount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Manhal)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ManhalId)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.FlowerName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.DateCreated)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.DateUpdated)
+                                        @Html.DisplayFor(modelItem => item.DatePick)
                                     </td>
                                     <td>
                                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

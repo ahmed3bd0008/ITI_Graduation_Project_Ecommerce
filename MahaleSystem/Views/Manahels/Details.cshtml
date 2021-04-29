@@ -1,4 +1,4 @@
-﻿@model MahaleSystem.Models.Manahel
+﻿@model MahaleSystem.ViewModel.Manahel.ManhalDetailsVM
 
 @{
     ViewData["Title"] = "Details";
@@ -6,50 +6,375 @@
 
 <h1>Details</h1>
 
-<div>
+<button id="btn1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
+<div id="info">
+    @await Component.InvokeAsync("DisplayStatistics", Model.manhal.Id)
+</div>
+
+<!-- Row -->
+<button id="btn2" class="btn btn-info" style="margin:10px" value="Show">Hide Filter</button>
+<div class="row row-sm" id="search">
+    <div class="col-sm-6 col-xl-3 col-lg-6">
+        <div class="card custom-card">
+            <div class="card-body dash1">
+                <div class="d-flex">
+                    <p class="mb-1 tx-inverse">Filter By</p>
+                </div>
+                <a class="btn ripple btn-outline-primary dropdown-toggle mb-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; Khalia Level &nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
+                <div class="dropdown-menu tx-13">
+                    <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Excellant">
+                        Excellant Khalia
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Strong">
+                        Strong Khalia
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Good">
+                        Good Khalia
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Weak">
+                        Weak Khalia
+                    </a>
+                </div>
+                <div class="expansion-label d-flex">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3 col-lg-6">
+        <div class="card custom-card">
+            <div class="card-body dash1">
+                <div class="d-flex">
+                    <p class="mb-1 tx-inverse">Filter By</p>
+                </div>
+                <a class="btn ripple btn-outline-primary dropdown-toggle mb-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; Khalia Type &nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
+                <div class="dropdown-menu tx-13">
+                    <a class="dropdown-item" asp-action="SearchType" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Complete">
+                        Complete
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchType" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Medium">
+                        Medium
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchType" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Small">
+                        Small
+                    </a>
+                </div>
+                <div class="expansion-label d-flex">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3 col-lg-6">
+        <div class="card custom-card">
+            <div class="card-body dash1">
+                <div class="d-flex">
+                    <p class="mb-1 tx-inverse">Filter By</p>
+                </div>
+                <a class="btn ripple btn-outline-primary dropdown-toggle mb-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i> &nbsp;&nbsp;&nbsp;&nbsp; Queen Status &nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
+                <div class="dropdown-menu tx-13">
+                    <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Fertilized">
+                        Fertilized
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Not Fertilized">
+                        Not Fertilized
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Stacked">
+                        Stacked
+                    </a>
+                    <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Without Queue">
+                        Without Queue
+                    </a>
+                </div>
+                <div class="expansion-label d-flex">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3 col-lg-6">
+        <div class="card custom-card">
+            <div class="card-body dash1">
+                <div class="">
+                    <a asp-action="AddKhalia" asp-controller="Manahels" asp-route-idM="@Model.manhal.Id" class="btn ripple btn-secondary navresponsive-toggler mb-0">Add New Khalia</a>
+                </div>
+                <div class="expansion-label d-flex">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Row  File Export DataTable-->
+<button id="btn3" class="btn btn-info" style="margin:10px" value="Show">Hide Khalia Table</button>
+<div class="row" id="divTable">
+    <div class="col-lg-12">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-body">
+                <div>
+                    <h6 class="card-title mb-1">Display All Khaliaes</h6>
+                </div>
+                <div class="table-responsive">
+                    <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Ssn)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().KhaliaLevel)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().KhaliaType)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().PraweezCount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Wood)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Queues.QueueStatus)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.khalias.First().Queues.DateFertilization)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.khalias)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ssn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KhaliaLevel)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.KhaliaType)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PraweezCount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Wood)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
+                                    </td>
+                                    <td>
+                                        @{try
+                                            {
+                                                if (item.Queues.QueueStatus == "Fertilized")
+                                                {
+                                                    string date = item.Queues.DateFertilization.Value.ToShortDateString();
+                                                    @date
+                                                }
+                                            }
+                                            catch { }
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-action="EditKhalia" asp-controller="Manahels" asp-route-id="@item.Id">Edit</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Row -->
+
+<button id="btn4" class="btn btn-info" style="margin:10px" value="Show">Hide Images</button>
+<div class="card-columns" id="divImages">
+    @foreach (var item in Model.imagesManahels)
+    {
+        <div class="card">
+            <div class="card-body text-center">
+                <img class="card-img" src="~/images/@item.ImagesString" />
+                <a asp-action="DeleteImage" asp-route-idImg="@item.Id" class="card-action">Delete</a>
+            </div>
+        </div>
+    }
+    <div class="card">
+        <div class="card-body text-center">
+            @*<div class="hidden">
+                    <input type="hidden" name="id" id="id" class="hidden bootstrap-switch-readonly">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Choose Image</label>
+                    <div class="custom-file">
+                        <input type="file" name="imageFile" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="button" id="btnAddImage" value="Add New Image" class="btn btn-success" />
+                </div>*@
+            @Html.Partial("_AddManhalImage", ViewData["ManhalImage"]);
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var b1 = false, b2 = false, b3 = false, b4 = false;
+        $("#btn1").click(function () {
+            $("#info").fadeToggle("2000");
+            var txt = $("#btn1").val;
+            if (b1 == false) {
+                $("#btn1").text = "Show Statistical";
+                b1 = true;
+            }
+            else {
+                $("#btn1").text = "Hide Statistical";
+                b = false;
+            }
+        });
+        $("#btn2").click(function () {
+            $("#search").fadeToggle("2000");
+            var txt = $("#btn2").val;
+            if (txt == "Show") {
+                $("#btn2").text = "Hide Search";
+                $("#btn2").val = "Hide";
+            }
+            else {
+                $("#btn2").text = "Show Search";
+                $("#btn2").val = "Show";
+            }
+        });
+        
+        $("#btn3").click(function () {
+            $("#divTable").fadeToggle("2000");
+            var txt = $("#btn3").val;
+            if (txt == "Show") {
+                $("#btn3").text = "Hide Khalia Table";
+                $("#btn3").val = "Hide";
+            }
+            else {
+                $("#btn3").text = "Show Khalia Table";
+                $("#btn3").val = "Show";
+            }
+        });
+        $("#btn4").click(function () {
+            $("#divImages").fadeToggle("2000");
+            var txt = $("#btn2").val;
+            if (txt == "Show") {
+                $("#btn4").text = "Hide Images";
+                $("#btn4").val = "Hide";
+            }
+            else {
+                $("#btn4").text = "Show Images";
+                $("#btn4").val = "Show";
+            }
+        });
+    });
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnAddImage").click(function () {
+            $("#divBody").remove();
+            var v1 = $("#id").val();
+            var v2 = $("#customFile").val();
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("AddImage2")",
+                data: { id: v1, imageFile: v2},
+                dataType: "json",
+                success: function (data) {
+                    var row = "";
+                    $.each(data, function (i, item) {
+                        row += '<div class="card">' +
+                            '<div class="card-body text-center">' +
+                            '<img class="card-img" src="~/images/'+item.ImagesString+'" />' +
+                            '<a asp-action="DeleteImage" asp-route-idImg="'+item.Id+'" class="card-action">Delete</a>' +
+                            '</div>' +
+                            '</div>';
+                    }
+                        $(".MainDiv div").append(row);
+
+                },
+                    error: function (req, status, error) {
+                        console.log(error);
+                }
+            });
+        });
+
+    });
+</script>
+
+<!-- End Row -->
+<div class="container mr-2">
     <h4>Manahel</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ssn)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.Ssn)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ssn)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.Ssn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NickName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.NickName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NickName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.NickName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LocationName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.LocationName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LocationName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.LocationName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FlowerName)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.FlowerName)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FlowerName)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.FlowerName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateCreated)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.DateCreated)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateCreated)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.DateCreated)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateUpdated)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.manhal.DateUpdated)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateUpdated)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manhal.DateUpdated)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.manhal.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
 

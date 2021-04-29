@@ -1,0 +1,68 @@
+﻿@model MahaleSystem.ViewModel.Manahel.AddKhaliaVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add New Khalia</h1>
+
+<hr />
+<div style="width:90%" class="container">
+    <form asp-action="AddKhalia">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+        <div class="row" style="margin:15px;">
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="Ssn"></label>
+                <input asp-for="Ssn" name="Ssn" class="form-control" />
+                <span asp-validation-for="Ssn" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="KhaliaLevel"></label>
+                <select asp-for="KhaliaLevel" name="KhaliaLevel" class="form-control" asp-items="ViewBag.KhaliaLevel"></select>
+                <span asp-validation-for="KhaliaLevel" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="KhaliaType"></label>
+                <select asp-for="KhaliaType" name="KhaliaType" class="form-control" asp-items="ViewBag.KhaliaType"></select>
+                <span asp-validation-for="KhaliaType" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin:15px">
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="Wood" class="control-label"></label>
+                <select asp-for="Wood" name="Wood" class="form-control" asp-items="ViewBag.woodType"></select>
+                <span asp-validation-for="Wood" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="PraweezCount" class="control-label"></label>
+                <input asp-for="PraweezCount" name="PraweezCount" class="form-control" />
+                <span asp-validation-for="PraweezCount" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="Notes" class="control-label"></label>
+                <input asp-for="Notes" name="Notes" class="form-control" />
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row" style="margin:15px">
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="QueueStatus" class="control-label"></label>
+                <select asp-for="QueueStatus" name="QueueStatus" class="form-control" asp-items="ViewBag.QueueStatus"></select>
+                <span asp-validation-for="QueueStatus" class="text-danger"></span>
+            </div>
+            <div class="col-sm-6 col-xl-4 col-lg-6">
+                <label asp-for="DateFertilization" class="control-label"></label>
+                <input class="form-control" asp-for="DateFertilization" name="DateFertilization" placeholder="Enter Date Created" required type="date">
+                <span asp-validation-for="DateFertilization" class="text-danger"></span>
+            </div>
+        </div>
+
+        <input type="hidden" asp-for="ManhalId" value=@ViewBag.ManhalId />
+
+        <div class="row">
+            <input type="submit" value="Add" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
+        </div>
+    </form>
+</div>
