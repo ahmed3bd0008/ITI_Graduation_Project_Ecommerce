@@ -135,7 +135,6 @@ D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.TagHelpers.output.cache
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.RazorCoreGenerate.cache
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\AddUser.cshtml.g.cs
-D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\login2.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\_AccountLayout.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
@@ -181,3 +180,5 @@ D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Components.dll
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs

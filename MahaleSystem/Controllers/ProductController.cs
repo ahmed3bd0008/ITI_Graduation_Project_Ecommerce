@@ -14,21 +14,10 @@ namespace MahaleSystem.Controllers
     {
         private readonly ManahelContext _context1;
         private readonly IProductRepository _context;
-<<<<<<< HEAD
         public ProductController(IProductRepository context)
         {
             this._context = context;
-=======
-
-      
-            public ProductController(IProductRepository context)
-        {
-            this._context = context;
-           
-
->>>>>>> 99d22654a65ec16a4aa4ee98fc9bc6962da3dbc3
         }
-
         public IActionResult Index()
         {
             _context.GetAll();
