@@ -14,6 +14,7 @@
 <!-- Row -->
 <button id="btn2" class="btn btn-info" style="margin:10px" value="Show">Hide Filter</button>
 <div class="row row-sm" id="search">
+    @*Filter By Khalia Level *@
     <div class="col-sm-6 col-xl-3 col-lg-6">
         <div class="card custom-card">
             <div class="card-body dash1">
@@ -47,6 +48,7 @@
         </div>
     </div>
 
+    @*Filter By Khalia Type*@
     <div class="col-sm-6 col-xl-3 col-lg-6">
         <div class="card custom-card">
             <div class="card-body dash1">
@@ -76,6 +78,7 @@
         </div>
     </div>
 
+    @*Filter By Queen Status*@
     <div class="col-sm-6 col-xl-3 col-lg-6">
         <div class="card custom-card">
             <div class="card-body dash1">
@@ -109,6 +112,7 @@
         </div>
     </div>
 
+    @*Add New Khalia*@
     <div class="col-sm-6 col-xl-3 col-lg-6">
         <div class="card custom-card">
             <div class="card-body dash1">
@@ -198,7 +202,7 @@
                                         <a asp-action="EditKhalia" asp-controller="Manahels" asp-route-id="@item.Id">Edit</a>
                                     </td>
                                 </tr>
-                            }
+                                            }
                         </tbody>
                     </table>
                 </div>
@@ -221,113 +225,122 @@
     }
     <div class="card">
         <div class="card-body text-center">
-            @*<div class="hidden">
-                    <input type="hidden" name="id" id="id" class="hidden bootstrap-switch-readonly">
+            <!--<div class="hidden">
+                <input type="hidden" name="id" id="id" class="hidden bootstrap-switch-readonly">
+            </div>
+            <div>
+                <h6 class="card-title mb-1">Upload Image</h6>
+            </div>
+            <div class="row mb-4">
+                <div class="col-10" style="margin:auto">
+                    <input type="file" name="imageFile" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="200" />
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Choose Image</label>
-                    <div class="custom-file">
-                        <input type="file" name="imageFile" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
-                    </div>
-                    <span class="text-danger"></span>
+            </div>-->
+            @*<div class="form-group">
+                <label class="control-label">Choose Image</label>
+                <div class="custom-file">
+                    <input type="file" name="imageFile" class="custom-file-input dropify" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
-                <div class="form-group">
-                    <input type="button" id="btnAddImage" value="Add New Image" class="btn btn-success" />
-                </div>*@
+                <span class="text-danger"></span>
+            </div>*@
+            <!--<div>
+                <button type="button" id="btnAddImage" onclick="btnImage(); alert('aaaa'); " value="Add New Image" class="btn btn-success">Add New Image</button>
+            </div>-->
+            
             @Html.Partial("_AddManhalImage", ViewData["ManhalImage"]);
         </div>
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
     $(document).ready(function () {
-        var b1 = false, b2 = false, b3 = false, b4 = false;
-        $("#btn1").click(function () {
-            $("#info").fadeToggle("2000");
-            var txt = $("#btn1").val;
-            if (b1 == false) {
-                $("#btn1").text = "Show Statistical";
-                b1 = true;
-            }
-            else {
-                $("#btn1").text = "Hide Statistical";
-                b = false;
-            }
-        });
-        $("#btn2").click(function () {
-            $("#search").fadeToggle("2000");
-            var txt = $("#btn2").val;
-            if (txt == "Show") {
-                $("#btn2").text = "Hide Search";
-                $("#btn2").val = "Hide";
-            }
-            else {
-                $("#btn2").text = "Show Search";
-                $("#btn2").val = "Show";
-            }
-        });
-        
-        $("#btn3").click(function () {
-            $("#divTable").fadeToggle("2000");
-            var txt = $("#btn3").val;
-            if (txt == "Show") {
-                $("#btn3").text = "Hide Khalia Table";
-                $("#btn3").val = "Hide";
-            }
-            else {
-                $("#btn3").text = "Show Khalia Table";
-                $("#btn3").val = "Show";
-            }
-        });
-        $("#btn4").click(function () {
-            $("#divImages").fadeToggle("2000");
-            var txt = $("#btn2").val;
-            if (txt == "Show") {
-                $("#btn4").text = "Hide Images";
-                $("#btn4").val = "Hide";
-            }
-            else {
-                $("#btn4").text = "Show Images";
-                $("#btn4").val = "Show";
-            }
-        });
-    });
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnAddImage").click(function () {
+        //$("#btnAddImage").click(function () { });
+        function btnImage() {
+            alert("btn click");
             $("#divBody").remove();
             var v1 = $("#id").val();
             var v2 = $("#customFile").val();
             $.ajax({
                 type: "POST",
                 url: "@Url.Action("AddImage2")",
-                data: { id: v1, imageFile: v2},
+                data: { id: v1, imageFile: v2 },
                 dataType: "json",
                 success: function (data) {
+                    alert("in success fun");
                     var row = "";
                     $.each(data, function (i, item) {
                         row += '<div class="card">' +
                             '<div class="card-body text-center">' +
-                            '<img class="card-img" src="~/images/'+item.ImagesString+'" />' +
-                            '<a asp-action="DeleteImage" asp-route-idImg="'+item.Id+'" class="card-action">Delete</a>' +
+                            '<img class="card-img" src="~/images/' + item.ImagesString + '" />' +
+                            '<a asp-action="DeleteImage" asp-route-idImg="' + item.Id + '" class="card-action">Delete</a>' +
                             '</div>' +
                             '</div>';
                     }
-                        $(".MainDiv div").append(row);
+                        $(".MainDiv div").append(row)
 
                 },
-                    error: function (req, status, error) {
-                        console.log(error);
+                error: function (req, status, error) {
+                    alert("in error fun");
+                    console.log(error);
                 }
             });
-        });
-
+        }
     });
 </script>
+
+<script>
+    $(document).ready(function () {
+        var b1 = false, b2 = false, b3 = false, b4 = false;
+        $("#btn1").click(function () {
+            $("#info").fadeToggle("slow");
+            if (b1 == false) {
+                document.getElementById("btn1").innerHTML = "Show Statistical";
+                b1 = true;
+            }
+            else {
+                document.getElementById("btn1").innerHTML = "Hide Statistical";
+                b1 = false;
+            }
+        });
+        $("#btn2").click(function () {
+            $("#search").fadeToggle("slow");
+            if (b2 == false) {
+                document.getElementById("btn2").innerHTML = "Show Search";
+                b2 = true;
+            }
+            else {
+                document.getElementById("btn2").innerHTML = "Hide Search";
+                b2 = false;
+            }
+        });
+        $("#btn3").click(function () {
+            $("#divTable").fadeToggle("slow");
+            if (b3 == false) {
+                document.getElementById("btn3").innerHTML = "Show Khalia Table";
+                b3 = true;
+            }
+            else {
+                document.getElementById("btn3").innerHTML = "Hide Khalia Table";
+                b3 = false;
+            }
+        });
+        $("#btn4").click(function () {
+            $("#divImages").fadeToggle("slow");
+            if (b4 == false) {
+                document.getElementById("btn4").innerHTML = "Show Images";
+                b4 = true;
+            }
+            else {
+                document.getElementById("btn4").innerHTML = "Hide Images";
+                b4 = false;
+            }
+        });
+    });
+</script>
+
 
 <!-- End Row -->
 <div class="container mr-2">

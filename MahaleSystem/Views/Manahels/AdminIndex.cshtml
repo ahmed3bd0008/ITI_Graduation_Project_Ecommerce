@@ -6,8 +6,8 @@
 
 <h1>Index</h1>
 
-<button id="btn1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
-<div id="info">
+<button id="btnA1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
+<div id="infoA">
     @await Component.InvokeAsync("DisplayAllStatistics", Model.ToList())
 </div>
 
@@ -17,8 +17,8 @@
         <div class="card custom-card">
             <div class="card-body">
                 <div>
-                    <h6 class="card-title mb-1">Vertical Scrollable Data Table</h6>
-                    <p class="text-muted card-sub-title">Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.</p>
+                    <h6 class="card-title mb-1">Display All Manahel</h6>
+                    <p class="text-muted card-sub-title"></p>
                 </div>
                 <div class="table-responsive">
                     <table id="example3" class="table table-striped table-bordered text-nowrap">
@@ -82,3 +82,20 @@
     </div>
 </div>
 <!-- End Row -->
+
+<script>
+    $(document).ready(function () {
+        var b1 = false;
+        $("#btnA1").click(function () {
+            $("#infoA").fadeToggle("sl");
+            if (b1 == false) {
+                document.getElementById("btnA1").innerHTML = "Show Statistical";
+                b1 = true;
+            }
+            else {
+                document.getElementById("btnA1").innerHTML = "Hide Statistical";
+                b1 = false;
+            }
+        });
+    });
+</script>

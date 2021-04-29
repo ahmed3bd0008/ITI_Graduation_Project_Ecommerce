@@ -30,6 +30,7 @@ namespace MahaleSystem
         {
             services.AddControllersWithViews();
 
+            services.AddServerSideBlazor();
 
             services.AddIdentity<CustomIdentityuser, CustomIdentityRole>().AddEntityFrameworkStores<ManahelContext>();
             services.AddDbContext<ManahelContext>(option =>
@@ -67,7 +68,15 @@ namespace MahaleSystem
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Manahels}/{action=SuperAdminIndex}/{id?}");
+                endpoints.MapBlazorHub();
             });
+
+            app.UseStaticFiles();
+            //    new StaticFileOptions
+            //{
+            //    ServeUnknownFileTypes = true,
+            //    DefaultContentType = "application/octet-stream"
+            //});
         }
     }
 }

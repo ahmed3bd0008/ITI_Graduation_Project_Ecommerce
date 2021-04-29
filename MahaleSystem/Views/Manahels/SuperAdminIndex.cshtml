@@ -6,11 +6,14 @@
 
 <h1>Index</h1>
 
-<button id="btn1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
-<div id="info">
+@*<div class="card">
+    @(await Html.RenderComponentAsync<MahaleSystem.Views.Shared.Components.FirstBlazor>(RenderMode.WebAssemblyPrerendered))
+</div>*@
+
+<button id="btnS1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
+<div id="infoS">
     @await Component.InvokeAsync("DisplayAllStatistics", Model.ToList())
 </div>
-
 
 <div class="container-fluid">
     <!-- Page Header -->
@@ -31,73 +34,91 @@
     <!-- End Page Header -->
 </div>
 
-<div class="row" id="divTable">
-    <div class="col-lg-12">
-        <div class="card custom-card overflow-hidden">
-            <div class="card-body">
-                <div>
-                    <h6 class="card-title mb-1">Display All Manahels</h6>
-                </div>
-                <div class="table-responsive">
-                    <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Ssn)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.NickName)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.LocationName)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.FlowerName)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DateCreated)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DateUpdated)
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
+    <div class="row" id="divTable">
+        <div class="col-lg-12">
+            <div class="card custom-card overflow-hidden">
+                <div class="card-body">
+                    <div>
+                        <h6 class="card-title mb-1">Display All Manahels</h6>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Ssn)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.NickName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LocationName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.FlowerName)
-                                    </td>
-                                    <td>
-                                        @{ string txt = item.DateCreated.ToShortDateString();}
-                                        @txt
-                                    </td>
-                                    <td>
-                                        @{ string txt2 = item.DateUpdated.ToShortDateString();}
-                                        @txt2
-                                    </td>
-                                    <td class="btn-group">
-                                        <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>
-                                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
-                                    </td>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Ssn)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.NickName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LocationName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.FlowerName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateCreated)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateUpdated)
+                                    </th>
+                                    <th></th>
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Ssn)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NickName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LocationName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.FlowerName)
+                                        </td>
+                                        <td>
+                                            @{ string txt = item.DateCreated.ToShortDateString();}
+                                            @txt
+                                        </td>
+                                        <td>
+                                            @{ string txt2 = item.DateUpdated.ToShortDateString();}
+                                            @txt2
+                                        </td>
+                                        <td class="btn-group">
+                                            <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>
+                                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- End Row -->
+    <!-- End Row -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var b1 = false;
+            $("#btnS1").click(function () {
+                $("#infoS").fadeToggle("slow");
+                if (b1 == false) {
+                    document.getElementById("btnS1").innerHTML = "Show Statistical";
+                    b1 = true;
+                }
+                else {
+                    document.getElementById("btnS1").innerHTML = "Hide Statistical";
+                    b1 = false;
+                }
+            });
+        });
+    </script>

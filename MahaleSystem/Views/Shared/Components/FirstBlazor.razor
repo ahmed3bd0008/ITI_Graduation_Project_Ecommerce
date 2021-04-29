@@ -1,0 +1,22 @@
+﻿<div class="card-header">
+    <h3>Data Component</h3>
+    <button onclick="Getdata" class="btn btn-success">Click to GetData</button>
+</div>
+<div class="card-body">
+    <br />
+    <div class="badge-primary">@counter </div>
+</div>
+
+@code {
+    //[Parameter]
+    //public string Data { get; set; } = string.Empty;
+    //[Parameter]
+    //public string style { get; set; }
+    public int counter = 1;
+    public void Getdata()
+    {
+        counter++;
+
+    }
+
+} 
