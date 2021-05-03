@@ -52,14 +52,7 @@ namespace MahaleSystem.Controllers
         public ActionResult SuperAdminIndex()
         {
             IsSuperAdmin = true; 
-            List<UsersManhals> manhalsID = contextuser.GetAll();
-            List<Manahel> manahels = new List<Manahel>();
-            foreach (var item in manhalsID)
-            {
-                manahels.Add(context1.GetElement(item.ManelId));
-            }
-            //ViewData["Manahel"] = manahels;// context1.GetAllManahelsMenuTest();
-            return View(manahels);
+            return View(context1.GetAllManahel());
         }
         public ActionResult DetailsAll()
         {

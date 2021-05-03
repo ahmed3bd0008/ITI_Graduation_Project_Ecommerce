@@ -9,6 +9,7 @@ namespace MahaleSystem.Repository.Interface
     public interface ImanahelRepository:IGenaricRepository<Manahel>
     {
         public Task<bool> Is_SSN_Exist(string ssn, string AccountID);
+        public List<Manahel> GetAllManahel();
         public Khalias AddKhalia(Khalias item);
         public Queue AddQueue(Queue item);
         public bool Check_SSN_Khalia(int SSN, int id_manahal);

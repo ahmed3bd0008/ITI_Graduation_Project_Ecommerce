@@ -189,3 +189,8 @@ D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.csprojAssemblyReference.cache
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\Components\GetManahal2\GetManahal2.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\AddImage.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Publish.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\Sell.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\DisplaySells.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\DisplayPublishs.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\Components\DisplayProductStatistics\DisplayProductStatistics.cshtml.g.cs

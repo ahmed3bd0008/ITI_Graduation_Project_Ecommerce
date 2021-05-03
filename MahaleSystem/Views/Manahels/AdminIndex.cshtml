@@ -74,13 +74,13 @@
                                             {
                                                 imgString= @item.ImageManhals.FirstOrDefault().ImagesString;
                                                 if (imgString == null)
-                                                    imgString = "~/assets/img/users/2.jpg";
+                                                    imgString = "../../assets/img/users/2.jpg";
                                                 else
-                                                    imgString = "~/images/" + imgString;
+                                                    imgString = "../../images/" + imgString;
                                             }
-                                            catch { imgString = "~/assets/img/users/2.jpg"; }
+                                            catch { imgString = "../../assets/img/users/2.jpg"; }
                                          }
-                                        <img src=@imgString class="rounded-circle" />
+                                        <img src=@imgString class="rounded-circle" style="width:70px" />
                                     </td>
                                     <td>
                                         <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>

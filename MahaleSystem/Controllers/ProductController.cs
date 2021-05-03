@@ -10,23 +10,24 @@ using MahaleSystem.Models;
 using MahaleSystem.ViewModel.Manahel;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using MahaleSystem.ViewModel.Product;
 
 namespace MahaleSystem.Controllers
 {
     public class ProductController : Controller
     {
-        //private readonly ManahelContext _context1;
+        private readonly ManahelContext context1;
         private readonly IProductRepository context;
         private readonly IWebHostEnvironment webHostEnvironment;
-        public ProductController(IProductRepository context,IWebHostEnvironment webHostEnvironment)
+        public ProductController(IProductRepository context,ManahelContext context1,IWebHostEnvironment webHostEnvironment)
         {
             this.context = context;
             this.webHostEnvironment = webHostEnvironment;
+            this.context1 = context1;
         }
-        public IActionResult Index(int manhalID)
+        public ActionResult Index(int manhalID)
         {
             ViewData["ManhalId"] = manhalID;
-            //List<Product> product = context.GetAllBy(a => a.ManhalId == manhalID);
 
             return View(context.GetProductsWithImage(manhalID));
         }
@@ -135,7 +136,114 @@ namespace MahaleSystem.Controllers
             context.Savechange();
             return RedirectToAction(nameof(Index), new { manhalID = id });
         }
+        public ActionResult Search(int id, string txtSearch)
+        {
+            var product = context1.Products.Where(a => a.ManhalId == id)
+                                .Where(b => b.ProductName.Contains(txtSearch))
+                                .Include(x => x.ImageProducts).ToList();
+            return View(nameof(Index), product);
+        }
+        [HttpGet]
+        public ActionResult Publish(int id)
+        {
+            ProductPublishVM publish = new ProductPublishVM();
+            publish.datePublish = DateTime.Now;
+            publish.ProductName = context.GetElement(id).ProductName;
+            publish.ProdcutID = id;
+            return View(publish);
+        }
+        [HttpPost]
+        public ActionResult Publish(ProductPublishVM publish)
+        {
+            if (ModelState.IsValid)
+            {
+                ProductPublish productPublish = new ProductPublish();
+                productPublish.ProdcutID = publish.ProdcutID;
+                productPublish.ProductName = publish.ProductName;
+                productPublish.ProductPrice = publish.ProductPrice;
+                productPublish.Description = publish.Description;
+                productPublish.datePublish = publish.datePublish;
 
+                context.AddProductPublish(productPublish);
+                var product = context.GetElement(publish.ProdcutID.Value);
+                return RedirectToAction(nameof(Index), new { manhalID = product.ManhalId});
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Sell(int id)
+        {
+            ProductSellVM sells = new ProductSellVM();
+            sells.ProdcutID = id;
+            sells.PrioductName = context.GetElement(id).ProductName;
+            sells.dateSell = DateTime.Now;
+            return View(sells);
+        }
+        [HttpPost]
+        public ActionResult Sell(ProductSellVM sellVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var product = context.GetElement(sellVM.ProdcutID.Value);
+                if (product != null)
+                {
+                    if (product.ProductAmount >= sellVM.ProductAmount)
+                    {
+                        ProductSells sells = new ProductSells();
+                        sells.ProdcutID = sellVM.ProdcutID;
+                        sells.PrioductName = sellVM.PrioductName;
+                        sells.Price = sellVM.Price;
+                        sells.Notes = sellVM.Notes;
+                        sells.dateSell = sellVM.dateSell;
+                        sells.ProductAmount = sellVM.ProductAmount;
+                        context.AddProductSell(sells);
+
+                        product.ProductAmount -= sellVM.ProductAmount;
+                        context.Updata(product);
+                        context.Savechange();
+                        return RedirectToAction(nameof(Index), new { manhalID = product.ManhalId });
+                    }
+                }
+            }
+            return View(sellVM);
+        }
+        public ActionResult DisplaySells(int manhalId)
+        {
+            var products = context.GetAllBy(a => a.ManhalId == manhalId).ToList();
+            List<ProductSells> productSells = new List<ProductSells>();
+            foreach (var item in products)
+            {
+                var pS = context1.ProductSells.Where(a => a.ProdcutID == item.Id).ToList();
+                if (pS != null) 
+                    productSells.AddRange(pS);
+            }
+            return View(productSells);
+        }
+        public ActionResult DisplayPublishs(int manhalId)
+        {
+            var products = context.GetAllBy(a => a.ManhalId == manhalId).ToList();
+            List<ProductPublish> productSells = new List<ProductPublish>();
+            foreach (var item in products)
+            {
+                var pS = context1.ProductPublish.Where(a => a.ProdcutID == item.Id).ToList();
+                if (pS != null)
+                    productSells.AddRange(pS);
+            }
+            return View(productSells);
+        }
+        public ActionResult DeletePublish(int id)
+        {
+            var publish = context1.ProductPublish.Where(a => a.Id == id).FirstOrDefault();
+            if (publish != null)
+            {
+                context1.ProductPublish.Remove(publish);
+                context1.SaveChanges();
+                var product = context.GetElement(publish.ProdcutID.Value);
+                return RedirectToAction(nameof(DisplayPublishs), new { id = product.ManhalId });
+            }
+            return NotFound();
+        }
         [HttpGet]
         public ActionResult AddImage(int productID)
         {
@@ -174,6 +282,18 @@ namespace MahaleSystem.Controllers
         private bool ProductExists(int id)
         {
             return context.GetAll().Any(e => e.Id == id);
+        }
+    }
+    public class DisplayProductStatisticsViewComponent : ViewComponent
+    {
+        private readonly IProductRepository context1;
+        public DisplayProductStatisticsViewComponent(IProductRepository context)
+        {
+            this.context1 = context;
+        }
+        public IViewComponentResult Invoke(int id_Manahal)
+        {
+            return View("DisplayProductStatistics", context1.GetAllStatistic(id_Manahal));
         }
     }
 }

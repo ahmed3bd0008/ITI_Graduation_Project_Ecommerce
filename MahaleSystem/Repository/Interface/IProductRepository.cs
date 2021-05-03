@@ -1,4 +1,5 @@
 ﻿using MahaleSystem.Models;
+using MahaleSystem.ViewModel.Manahel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,8 @@ namespace MahaleSystem.Repository.Interface
         public Manahel GetManahel(int idProduct);
         public List<Product> GetProductsWithImage(int idManhal);
         public void DeleteProductImages(int idProduct);
+        public void AddProductSell(ProductSells sells);
+        public void AddProductPublish(ProductPublish publish);
+        public List<InfoVM> GetAllStatistic(int manahelId);
     }
 }

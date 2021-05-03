@@ -1,5 +1,6 @@
 ﻿using MahaleSystem.Models;
 using MahaleSystem.Repository.Interface;
+using MahaleSystem.ViewModel.Manahel;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,16 @@ namespace MahaleSystem.Repository.Implementation
                 catch { }
             }
         }
+        public void AddProductSell(ProductSells sells)
+        {
+            context.ProductSells.Add(sells);
+            context.SaveChanges();
+        }
+        public void AddProductPublish(ProductPublish publish)
+        {
+            context.ProductPublish.Add(publish);
+            context.SaveChanges();
+        }
         public List<Product> GetProductsWithImage(int idManhal)
         {
             var products = context.Products.Where(a => a.ManhalId == idManhal).ToList();
@@ -64,6 +75,63 @@ namespace MahaleSystem.Repository.Implementation
                     return manahel;
             }
             return null;
+        }
+        public int GetShamaStatistic(int manhalId)
+        {
+            var products = context.Products.Where(a => a.ManhalId == manhalId)
+                                     .Where(b => b.ProductName.Contains("شمع")).ToList();
+            int quantity = 0;
+            foreach (var item in products)
+            {
+                quantity += item.ProductAmount;
+                //var productSells = context.ProductSells.Where(a => a.ProdcutID == item.Id).ToList();
+                //foreach (var item2 in productSells)
+                //{
+                //    quantity += item2.ProductAmount;
+                //}
+            }
+            return quantity;
+        }
+        public Tuple<int,int,int> GetAsalStatistic(int manhalId)
+        {
+            var products = context.Products.Where(a => a.ManhalId == manhalId)
+                                     .Where(b => b.ProductName.Contains("عسل")).ToList();
+            int Q1 = 0, Q2 = 0, Q3 = 0;
+            foreach (var item in products)
+            {
+                if (item.Containter == "صفيحة")
+                    Q1 += item.ProductAmount;
+                if (item.Containter == "جركن")
+                    Q2 += item.ProductAmount;
+                else
+                    Q3 += item.ProductAmount;
+                //var productSells = context.ProductSells.Where(a => a.ProdcutID == item.Id).ToList();
+                //foreach (var item2 in productSells)
+                //{
+                //    if(item.Containter=="صفيحة")
+                //        Q1 += item2.ProductAmount;
+                //    if (item.Containter == "جركن")
+                //        Q2 += item2.ProductAmount;
+                //    else
+                //        Q3 += item2.ProductAmount;
+                //}
+            }
+            Tuple<int, int, int> tuple = new Tuple<int, int, int>(Q1, Q2, Q3);
+            return tuple;
+        }
+        public List<InfoVM> GetAllStatistic(int manahelId)
+        {
+            int Q4 = GetShamaStatistic(manahelId);
+            Tuple<int, int, int> t = GetAsalStatistic(manahelId);
+            Tuple<int, int, int, int> tuple2 = new Tuple<int, int, int, int>(t.Item1, t.Item2, t.Item3, Q4);
+            List<InfoVM> infoVMs = new List<InfoVM>()
+            {
+                new InfoVM(){name="كمية العسل بالصفيحة",value=t.Item1},
+                new InfoVM(){name="كمية العسل بالجركن",value=t.Item2},
+                new InfoVM(){name="كمية العسل بجارة",value=t.Item3},
+                new InfoVM(){name="كمية الشمع بالكيلو",value=Q4},
+            };
+            return infoVMs;
         }
     }
 }

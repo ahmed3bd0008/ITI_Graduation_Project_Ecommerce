@@ -2,7 +2,7 @@
 using MahaleSystem.Models.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MahaleSystem.Models
 {
@@ -24,6 +24,9 @@ namespace MahaleSystem.Models
         public DbSet<Queue> Queues { get; set; }
         public DbSet<ImagesProduct> ImagesProducts { get; set; }
         public DbSet<UsersManhals> UsersManhals { get; set; }
+
+        public DbSet<ProductSells> ProductSells { get; set; }
+        public DbSet<ProductPublish> ProductPublish { get; set; }
     }
     
 }

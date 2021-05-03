@@ -29,6 +29,10 @@ namespace MahaleSystem.Repository.Implementation
             }
             return false;
         }
+        public List<Manahel> GetAllManahel()
+        {
+            return context.Manahels.Include(x => x.ImageManhals).ToList();
+        }
         public Khalias AddKhalia(Khalias item)
         {
             context.khaliases.Add(item);
