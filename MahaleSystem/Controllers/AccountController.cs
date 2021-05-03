@@ -1,5 +1,12 @@
+
 ﻿using MahaleSystem.Models;
 using MahaleSystem.Models.Identity;
+﻿using MahaleSystem.Models.Identity;
+using MahaleSystem.ViewModel;
+using MahaleSystem.ViewModel.Account;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using MahaleSystem.Models;
 using MahaleSystem.Repository.Implementation;
 using MahaleSystem.ViewModel.Account;
 using Microsoft.AspNetCore.Identity;
@@ -7,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -53,5 +61,67 @@ namespace MahaleSystem.Controllers
             }
             return View();
         }
+        public async Task<IActionResult> Register()
+        {
+            var users = _userManager.Users.ToList();
+            String Role;
+            DisplayUserViewModel model = new() { users = users };
+            foreach (var item in users)
+            {
+                Role = (await _userManager.GetRolesAsync(item)).FirstOrDefault();
+                model.Roles.Add(Role);
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult AddUser()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddUser(AddUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model != null)
+                {
+                    CustomIdentityuser user = new()
+                    {
+                        Email = model.Name,
+                        UserName = model.Name,
+                        PhoneNumber = model.Phone
+                    };
+                    if (model.formFile != null)
+                    {
+                        user.Image = _uploadFile.ProcessorUploadFile(model);
+                    }
+                    else
+                    {
+                        user.Image = "index.png";
+                    }
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+
+                    }
+                }
+            }
+            return View();
+        }
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        
     }
+    
 }
+

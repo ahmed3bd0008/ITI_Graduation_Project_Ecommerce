@@ -168,6 +168,7 @@ namespace MahaleSystem.Controllers
                 Task<bool> b = context1.Is_SSN_Exist(manahelVM.manahel.Ssn, manahelVM.AccountId);
                 if (b.Result == false)
                 {
+                    manahelVM.manahel.DateUpdated = manahelVM.manahel.DateCreated;
                     Manahel manahel = context1.Add(manahelVM.manahel);
                     context1.Savechange();
                     UsersManhals usersManhals = new UsersManhals();
@@ -194,7 +195,7 @@ namespace MahaleSystem.Controllers
                             context1.AddImage(images);
                         }
                         catch { }
-                }
+                    }
                     return RedirectToAction(nameof(SuperAdminIndex));
                 }
             }
@@ -549,6 +550,38 @@ namespace MahaleSystem.Controllers
         public IViewComponentResult Invoke(List<Manahel> manahels)
         {
             return View("DisplayAllStatistics", context1.GetStatisticForManahalList(manahels));
+        }
+    }
+    // get manahel for products
+    public class GetManahal2ViewComponent : ViewComponent
+    {
+        private readonly ImanahelRepository context1;
+        private readonly IUsersManhalRepositry contextuser;
+        public GetManahal2ViewComponent(ImanahelRepository context, IUsersManhalRepositry contextuser)
+        {
+            this.context1 = context;
+            this.contextuser = contextuser;
+        }
+        public IViewComponentResult Invoke()
+        {
+            List<Manahel> manahels = new List<Manahel>();
+            if (ManahelsController.IsSuperAdmin)
+            {
+                List<UsersManhals> manhalsID = contextuser.GetAll();
+                foreach (var item in manhalsID)
+                {
+                    manahels.Add(context1.GetElement(item.ManelId));
+                }
+            }
+            else
+            {
+                List<UsersManhals> manhalsID = contextuser.GetAllBy(a => a.UserId == ManahelsController.userID);
+                foreach (var item in manhalsID)
+                {
+                    manahels.Add(context1.GetElement(item.ManelId));
+                }
+            }
+            return View("GetManahal2", manahels);
         }
     }
 }

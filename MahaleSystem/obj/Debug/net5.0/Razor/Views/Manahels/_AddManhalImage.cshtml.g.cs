@@ -26,8 +26,36 @@ using MahaleSystem.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\Views\_ViewImports.cshtml"
+using MahaleSystem.Models.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\Views\_ViewImports.cshtml"
+using MahaleSystem.ViewModel.Account;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\Views\_ViewImports.cshtml"
+using MahaleSystem.ViewModel.Administration;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b0", @"/Views/Manahels/_AddManhalImage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8a0b08fc69a19b4e1441a5b3b5577be667368eea", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"22e91d1512ae8554956f31c553855f259279f46e", @"/Views/_ViewImports.cshtml")]
     public class Views_Manahels__AddManhalImage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<MahaleSystem.ViewModel.Manahel.AddImageVM>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "hidden", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -67,9 +95,9 @@ using MahaleSystem.Models;
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b06777", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b07621", async() => {
                 WriteLiteral("\r\n<div class=\"hidden\">\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b07065", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b07909", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -93,7 +121,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n</div>\r\n<div class=\"form-group\">\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b08916", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b09760", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper>();
@@ -115,7 +143,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n    <div class=\"custom-file\">\r\n        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b010562", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b011406", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -138,7 +166,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n        <label class=\"custom-file-label\" for=\"customFile\">Choose file</label>\r\n    </div>\r\n    ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b012351", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("span", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd316f6f9fe9d5188d90cf461d5b6bc46fbc60b013195", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_ValidationMessageTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper>();

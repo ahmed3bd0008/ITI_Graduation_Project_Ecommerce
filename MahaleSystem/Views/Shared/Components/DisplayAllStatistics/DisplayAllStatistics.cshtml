@@ -28,6 +28,7 @@
     </div>
 </div>
 
+@{ int count = Model.Item1[1][0].value;}
 
 @foreach (var item1 in Model.Item1)
 {
@@ -46,14 +47,14 @@
                     </div>
                 </div>
                 <div>
-                    @{ int x = item.value / 5;}
-                    <h3 class="dash-25">@x%</h3>
+                    @{ int x = item.value;}
+                    <h3 class="dash-25">@x</h3>
                 </div>
                 @*<div>
                         <progress max="500" value="@item.value"></progress>
                     </div>*@
             <div class="progress">
-                @{ int x2 = item.value / 5;}
+                @{ int x2 = (item.value * 100) / count;}
                 <div class="progress-bar bg-warning" style="width:@x2%"></div>
             </div>
                 @*<div class="progress mb-1">

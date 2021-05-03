@@ -1,0 +1,32 @@
+﻿@model ClaimsUserViewModel 
+@{
+    Layout = null;
+}
+
+    <div class="modal-header">
+        <h6 class="modal-title">Add Claims</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+
+        <form class="text-center" method="post" asp-action="GetAllClaims" asp-controller="Administration">
+            @{
+                for (int i = 0; i < Model.Claimsuser.Count; i++)
+                {
+                    <input type="hidden" asp-for="@Model.UserId"/>
+                    <div class="form-control row">
+                        <label class="col-3" asp-for="@Model.Claimsuser[i].IsSelected"> @Model.Claimsuser[i].ClaimsType </label>
+                        <input class="col-3" type="checkbox" asp-for="@Model.Claimsuser[i].IsSelected" />
+                        <input type="hidden" asp-for="@Model.Claimsuser[i].ClaimsType" />
+
+                        <br />
+                    </div>
+                }
+            }
+            <input  class="btn ripple btn-primary" value=" Save changes" type="submit"/>
+            <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+       
+    </div>

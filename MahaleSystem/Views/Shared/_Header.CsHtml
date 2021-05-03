@@ -1,4 +1,5 @@
-﻿<div class="main-header side-header sticky sticky-pin" style="margin-bottom: -64px;">
+﻿@inject SignInManager<CustomIdentityuser> signInManager
+<div class="main-header side-header sticky sticky-pin" style="margin-bottom: -64px;">
     <div class="container-fluid">
         <div class="main-header-left">
             <a class="main-logo d-lg-none" href="index.html">
@@ -10,41 +11,51 @@
             <a class="main-header-menu-icon" href="" id="mainSidebarToggle"><span></span></a>
         </div>
         <div class="main-header-right">
-           
+
             <div class="dropdown d-md-flex">
                 <a class="nav-link icon full-screen-link">
                     <i class="fe fe-maximize fullscreen-button"></i>
                 </a>
             </div>
-           
-            <div class="dropdown main-profile-menu">
-                <a class="main-img-user" href=""><img alt="avatar" src="~/assets/img/users/1.jpg"></a>
-                <div class="dropdown-menu">
-                    <div class="header-navheading">
-                        <h6 class="main-notification-title">Sonia Taylor</h6>
-                        <p class="main-notification-text">Web Designer</p>
+            @if (signInManager.IsSignedIn(User))
+
+            {
+                <div class="dropdown main-profile-menu">
+                    <a class="main-img-user" href=""><img alt="avatar" src="~/assets/img/users/1.jpg"></a>
+                    <div class="dropdown-menu">
+                        <div class="header-navheading">
+                            <h6 class="main-notification-title">@User.Identity.Name</h6>
+                            <p class="main-notification-text">@User.Identity.Name</p>
+                        </div>
+                        <a class="dropdown-item border-top" href="">
+                            <i class="fe fe-user"></i> My Profile
+                        </a>
+                        <a class="dropdown-item" href="">
+                            <i class="fe fe-edit"></i> Edit Profile
+                        </a>
+                        <a class="dropdown-item" href="">
+                            <i class="fe fe-settings"></i> Account Settings
+                        </a>
+                        <a class="dropdown-item" href="">
+                            <i class="fe fe-settings"></i> Support
+                        </a>
+                        <a class="dropdown-item" href="">
+                            <i class="fe fe-compass"></i> Activity
+                        </a>
+                        <a class="dropdown-item" href="signin.html">
+                            <i class="fe fe-power"></i> Sign Out
+                        </a>
                     </div>
-                    <a class="dropdown-item border-top" href="">
-                        <i class="fe fe-user"></i> My Profile
-                    </a>
-                    <a class="dropdown-item" href="">
-                        <i class="fe fe-edit"></i> Edit Profile
-                    </a>
-                    <a class="dropdown-item" href="">
-                        <i class="fe fe-settings"></i> Account Settings
-                    </a>
-                    <a class="dropdown-item" href="">
-                        <i class="fe fe-settings"></i> Support
-                    </a>
-                    <a class="dropdown-item" href="">
-                        <i class="fe fe-compass"></i> Activity
-                    </a>
-                    <a class="dropdown-item" href="signin.html">
-                        <i class="fe fe-power"></i> Sign Out
-                    </a>
                 </div>
-            </div>
-           
+
+            }
+            else
+            {
+                <a class="dropdown-item" href="signin.html">
+                    <i class="fe fe-power"></i> Sign as
+                </a>
+            }
+
         </div>
     </div>
 </div>

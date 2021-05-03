@@ -113,52 +113,49 @@ namespace MahaleSystem.Repository.Implementation
             {
                 try
                 {
-                    if (item.KhaliaLevel == "Excellent")
+                    if (item.KhaliaLevel == "ممتاز")
                         level1++;
-                    else if (item.KhaliaLevel == "Strong")
+                    else if (item.KhaliaLevel == "قوي")
                         level2++;
-                    else if (item.KhaliaLevel == "Good")
+                    else if (item.KhaliaLevel == "جيد")
                         level3++;
-                    else if (item.KhaliaLevel == "Weak")
+                    else if (item.KhaliaLevel == "ضعيف")
                         level4++;
                 }
                 catch { }
             }
             return new List<InfoVM>()
             {
-                new InfoVM() {name = "Excellent Khaliaes", value = level1 },
-                new InfoVM() {name = "Strong Khaliaes", value = level2 },
-                new InfoVM() {name = "Good Khaliaes", value = level3 },
-                new InfoVM() {name = "Weak Khaliaes", value = level4 },
+                new InfoVM() {name = "الخلايا الممتازة", value = level1 },
+                new InfoVM() {name = "الخلايا القوية", value = level2 },
+                new InfoVM() {name = "الخلايا الجيدة", value = level3 },
+                new InfoVM() {name = "الخلايا الضعيفة", value = level4 },
             };
-            //return new Tuple<int, int, int, int>(level1, level2, level3, level4);
-
-            //List<Khalias> khalias = context.khaliases.Where(b => b.KhaliaLevel == str).Count();
-            //return khalias.Count;
-            //return context.khaliases.Where(b => b.KhaliaLevel == str).Count();
         }
         public List<InfoVM> calcKhalaiaType(int id_manahal)
         {
-            int level1 = 0, level2 = 0, level3 = 0;
+            int level1 = 0, level2 = 0, level3 = 0, all = 0 ;
             var khalia = context.khaliases.Where(a => a.ManhalId == id_manahal);
             foreach (var item in khalia)
             {
                 try
                 {
-                    if (item.KhaliaType == "Complete")
+                    if (item.KhaliaType == "كاملة")
                         level1++;
-                    else if (item.KhaliaType == "Medium")
+                    else if (item.KhaliaType == "طرد")
                         level2++;
-                    else if (item.KhaliaType == "Small")
+                    else if (item.KhaliaType == "نوية")
                         level3++;
                 }
                 catch { }
             }
+            all = level1 + level2 + level3;
             return new List<InfoVM>()
             {
-                new InfoVM() {name = "Comlete Khaliaes", value = level1 },
-                new InfoVM() {name = "Medium Khaliaes", value = level2 },
-                new InfoVM() {name = "Small Khaliaes", value = level3 },
+                new InfoVM() {name = "كل الخلايا", value = all },
+                new InfoVM() {name = "الخلايا الكاملة", value = level1 },
+                new InfoVM() {name = "عدد الطرود", value = level2 },
+                new InfoVM() {name = "عدد النوية", value = level3 },
             };
             //return new Tuple<int, int, int>(level1, level2, level3);
 
@@ -173,32 +170,34 @@ namespace MahaleSystem.Repository.Implementation
                 {
                     try
                     {
-                        if (item.QueueStatus == "Fertilized")
+                        if (item.QueueStatus == "ملقحة")
                             counter1++;
-                        else if (item.QueueStatus == "Not Fertilized")
+                        else if (item.QueueStatus == "عذراء")
                             counter2++;
-                        else if (item.QueueStatus == "Stacked")
+                        else if (item.QueueStatus == "مكدبة")
                             counter3++;
-                        else if (item.QueueStatus == "Without Queen")
+                        else if (item.QueueStatus == "بدون ملكة")
                             counter4++;
                     }
                     catch { }
                 }
+                else
+                    counter4++;
             }
             return new List<InfoVM>()
             {
-                new InfoVM() {name = "Fertilized Queenes", value = counter1 },
-                new InfoVM() {name = "Not Fertilized Queenes", value = counter2 },
-                new InfoVM() {name = "Stacked Queenes", value = counter3 },
-                new InfoVM() {name = "Without Queenes", value = counter4 },
+                new InfoVM() {name = "الملكات الملقحة", value = counter1 },
+                new InfoVM() {name = "الملكات العذراء", value = counter2 },
+                new InfoVM() {name = "الملكات المكدبة", value = counter3 },
+                new InfoVM() {name = "بدون ملكة", value = counter4 },
             };
             //return new Tuple<int, int, int, int>(counter1, counter2, counter3, counter4);
         }
         public Tuple<List<InfoVM>[],int> getStatistics(int id_manahal)
         {
             List<InfoVM>[] arr = new List<InfoVM>[3];
-            arr[0] = calcKhalaiaLevel(id_manahal);
-            arr[1] = calcKhalaiaType(id_manahal);
+            arr[0] = calcKhalaiaType(id_manahal);
+            arr[1] = calcKhalaiaLevel(id_manahal);
             arr[2] = calcQueenStatus(id_manahal);
             int degree = 0, max = 0 ;
             for (int i = 0; i < 3; i++)
@@ -284,9 +283,9 @@ namespace MahaleSystem.Repository.Implementation
         public Tuple<List<InfoVM>[], int> GetStatisticForManahalList(List<Manahel> manahels)
         {
             int ManhalCount = manahels.Count;
-            int average = 0; List<InfoVM>[] t = Initial();
+            int average = 0, parcent = 0 ; List<InfoVM>[] t = Initial();
             int kL1 = 0, kL2 = 0, kL3 = 0, kL4 = 0;
-            int kT1 = 0, kT2 = 0, kT3 = 0;
+            int kT1 = 0, kT2 = 0, kT3 = 0, kT4 = 0;
             int kQ1 = 0, kQ2 = 0, kQ3 = 0, kQ4 = 0;
             for (int i = 0; i < manahels.Count; i++)
             {
@@ -294,14 +293,16 @@ namespace MahaleSystem.Repository.Implementation
                 {
                     Tuple<List<InfoVM>[], int> tuple = getStatistics(manahels[i].Id);
                     average += tuple.Item2;
-                    kL1 += tuple.Item1[0][0].value;
-                    kL2 += tuple.Item1[0][1].value;
-                    kL3 += tuple.Item1[0][2].value;
-                    kL4 += tuple.Item1[0][3].value;
+                    kT4 += tuple.Item1[0][0].value;
+                    kT1 += tuple.Item1[0][1].value;
+                    kT2 += tuple.Item1[0][2].value;
+                    kT3 += tuple.Item1[0][3].value;
 
-                    kT1 += tuple.Item1[1][0].value;
-                    kT2 += tuple.Item1[1][1].value;
-                    kT3 += tuple.Item1[1][2].value;
+                    kL1 += tuple.Item1[1][0].value;
+                    kL2 += tuple.Item1[1][1].value;
+                    kL3 += tuple.Item1[1][2].value;
+                    kL4 += tuple.Item1[1][3].value;
+
 
                     kQ1 += tuple.Item1[2][0].value;
                     kQ2 += tuple.Item1[2][1].value;
@@ -312,22 +313,25 @@ namespace MahaleSystem.Repository.Implementation
             }
             try
             {
-                t[0][0].value = kL1 / ManhalCount;
-                t[0][1].value = kL2 / ManhalCount;
-                t[0][2].value = kL3 / ManhalCount;
-                t[0][3].value = kL4 / ManhalCount;
+                t[0][0].value = kT4 /*/ ManhalCount*/;
+                t[0][1].value = kT1 /*/ ManhalCount*/;
+                t[0][2].value = kT2 /*/ ManhalCount*/;
+                t[0][3].value = kT3 /*/ ManhalCount*/;
 
-                t[1][0].value = kT1 / ManhalCount;
-                t[1][1].value = kT2 / ManhalCount;
-                t[1][2].value = kT3 / ManhalCount;
+                t[1][0].value = kL1 /*/ ManhalCount*/;
+                t[1][1].value = kL2 /*/ ManhalCount*/;
+                t[1][2].value = kL3/* / ManhalCount*/;
+                t[1][3].value = kL4 /*/ ManhalCount*/;
 
-                t[2][0].value = kQ1 / ManhalCount;
-                t[2][1].value = kQ2 / ManhalCount;
-                t[2][2].value = kQ3 / ManhalCount;
-                t[2][3].value = kQ4 / ManhalCount;
+
+                t[2][0].value = kQ1 /*/ ManhalCount*/;
+                t[2][1].value = kQ2 /*/ ManhalCount*/;
+                t[2][2].value = kQ3 /*/ ManhalCount*/;
+                t[2][3].value = kQ4 /*/ ManhalCount*/;
+                parcent = average / ManhalCount;
             }
             catch { }
-            return new Tuple<List<InfoVM>[], int>(t, average / ManhalCount);
+            return new Tuple<List<InfoVM>[], int>(t, parcent);
         }
 
         public List<InfoVM>[] Initial()
@@ -335,23 +339,25 @@ namespace MahaleSystem.Repository.Implementation
             List<InfoVM>[] t = new List<InfoVM>[3];
             var t1= new List<InfoVM>()
             {
-                new InfoVM() {name = "Excellent Khaliaes", value = 0 },
-                new InfoVM() {name = "Strong Khaliaes", value = 0 },
-                new InfoVM() {name = "Good Khaliaes", value = 0 },
-                new InfoVM() {name = "Weak Khaliaes", value = 0 },
+                new InfoVM() {name = "كل الخلايا", value = 0 },
+                new InfoVM() {name = "الخلايا الكاملة", value = 0 },
+                new InfoVM() {name = "الخلايا الطرود", value = 0 },
+                new InfoVM() {name = "الخلايا النوية", value = 0 },
             };
             var t2= new List<InfoVM>()
             {
-                new InfoVM() {name = "Comlete Khaliaes", value = 0 },
-                new InfoVM() {name = "Medium Khaliaes", value = 0 },
-                new InfoVM() {name = "Small Khaliaes", value = 0 },
+                new InfoVM() {name = "الخلايا الممتازة", value = 0 },
+                new InfoVM() {name = "الخلايا القوية", value = 0 },
+                new InfoVM() {name = "الخلايا الجيدة", value = 0 },
+                new InfoVM() {name = "الخلايا الضعيفة", value = 0 },
             };
+            
             var t3 = new List<InfoVM>()
             {
-                new InfoVM() { name = "Fertilized Queenes", value = 0 },
-                new InfoVM() {name = "Not Fertilized Queenes", value = 0 },
-                new InfoVM() {name = "Stacked Queenes", value = 0 },
-                new InfoVM() {name = "Without Queenes", value = 0 },
+                new InfoVM() { name = "الملكات الملقحة", value = 0 },
+                new InfoVM() {name = "الملكات العذراء", value = 0 },
+                new InfoVM() {name = "الملكات المكدبة", value = 0 },
+                new InfoVM() {name = "بدون ملكة", value = 0 },
             };
             t[0] = t1;
             t[1] = t2;

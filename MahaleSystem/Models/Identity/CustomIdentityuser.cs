@@ -8,5 +8,6 @@ namespace MahaleSystem.Models.Identity
 {
     public class CustomIdentityuser:IdentityUser
     {
+        public String Image { get; set; }
     }
 }

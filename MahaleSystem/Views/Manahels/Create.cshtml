@@ -2,8 +2,8 @@
 
 @{
     ViewData["Title"] = "Create";
+  
 }
-
 
 <!-- Row -->
 <div class="row">
@@ -11,45 +11,43 @@
         <div class="card custom-card">
             <div class="card-body">
                 <div>
-                    <h1 class="container">Add New Manahal</h1>
+                    <h1 class="container">إضافة منحل جديد</h1>
                     <p class="text-muted card-sub-title"></p>
                 </div>
                 <form asp-action="Create" asp-controller="Manahels" method="post">
                     <div class="">
                         <div class="row">
                             <div class="col-lg-6 form-group">
-                                <label class="form-label">SSN: <span class="tx-danger">*</span></label>
+                                <label class="form-label">كود المنحل: <span class="tx-danger">*</span></label>
                                 <input class="form-control" asp-for="manahel.Ssn" placeholder="Enter SSN A, B" required="" type="text">
                                 <span asp-validation-for="manahel.Ssn" class="text-danger"></span>
                             </div>
                             <div class="col-lg-6 form-group">
-                                <label class="form-label">Manahal Name: <span class="tx-danger">*</span></label>
+                                <label class="form-label">اسم المنحل: <span class="tx-danger">*</span></label>
                                 <input class="form-control" asp-for="manahel.NickName" placeholder="Enter Manahal Name" required="" type="text">
                                 <span asp-validation-for="manahel.NickName" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 form-group">
-                                <label class="form-label">Flower Name: <span class="tx-danger">*</span></label>
+                                <label class="form-label">اسم الزهرة: <span class="tx-danger">*</span></label>
                                 <input class="form-control" asp-for="manahel.FlowerName" placeholder="Enter Flower Name" required="" type="text">
                                 <span asp-validation-for="manahel.FlowerName" class="text-danger"></span>
                             </div>
                             <div class="col-lg-6 form-group">
-                                <label class="form-label">Location Name: <span class="tx-danger">*</span></label>
+                                <label class="form-label">الموقع: <span class="tx-danger">*</span></label>
                                 <input class="form-control" asp-for="manahel.LocationName" placeholder="Enter Location Name" required="" type="text">
                                 <span asp-validation-for="manahel.LocationName" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 form-group">
-                                <label class="form-label">Date Created: <span class="tx-danger">*</span></label>
+                                <label class="form-label">تاريخ الانشاء: <span class="tx-danger">*</span></label>
                                 <input class="form-control" asp-for="manahel.DateCreated" placeholder="Enter Date Created" required="" type="date">
                                 <span asp-validation-for="manahel.DateCreated" class="text-danger"></span>
                             </div>
-                            <div class="col-lg-6 form-group"> @*mg-t-20 mg-lg-t-0*@
-                                <label class="form-label">Select Admin: <span class="tx-danger">*</span></label>
-                                @*<p class="mg-b-10">Single Select with Search</p>*@
-                                @*<select asp-for="AccountId" asp-items="@ViewBag.Admins"></select>*@
+                            <div class="col-lg-6 form-group">
+                                <label class="form-label">اختيار الادمن: <span class="tx-danger">*</span></label>
                                 <select asp-for="AccountId" class="form-control select2">
                                     @foreach (var item in ViewBag.Users as List<Tuple<string, string>>)
                                     {
@@ -65,11 +63,11 @@
                                 <div class="card custom-card">
                                     <div class="card-body">
                                         <div>
-                                            <h6 class="card-title mb-1">Upload Image</h6>
+                                            <h6 class="card-title mb-1">تحميل صورة للمنحل</h6>
                                         </div>
                                         <div class="row mb-4">
                                             <div class="col-sm-12 col-md-4">
-                                                <input type="file" asp-for="imageFile" name="imageFile" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="200" />
+                                                <input type="file" asp-for="imageFile" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="200" />
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +76,7 @@
                         </div>
                         <!-- End Row -->
                     </div>
-                    <button class="btn ripple btn-main-primary btn-block" type="submit">Add New Manhal</button>
+                    <button class="btn ripple btn-main-primary btn-block" type="submit">إضافة منحل جديد</button>
                 </form>
             </div>
         </div>

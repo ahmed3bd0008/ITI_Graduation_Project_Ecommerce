@@ -2,6 +2,7 @@ using MahaleSystem.Models;
 using MahaleSystem.Models.Identity;
 using MahaleSystem.Repository.Implementation;
 using MahaleSystem.Repository.Interface;
+using MahaleSystem.ViewModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -41,6 +42,7 @@ namespace MahaleSystem
             services.AddScoped(typeof(ImanahelRepository), typeof(manahelRepository));
             services.AddScoped(typeof(IUsersManhalRepositry), typeof(UsersManhalRepositry));
             services.AddScoped(typeof(IProductRepository), typeof(ProductRepository));
+            services.AddScoped(typeof( IUploadFile),typeof( UploadFile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +62,7 @@ namespace MahaleSystem
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

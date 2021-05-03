@@ -7,53 +7,78 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MahaleSystem.Repository.Interface;
 using MahaleSystem.Models;
+using MahaleSystem.ViewModel.Manahel;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MahaleSystem.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ManahelContext _context1;
-        private readonly IProductRepository _context;
-        public ProductController(IProductRepository context)
+        //private readonly ManahelContext _context1;
+        private readonly IProductRepository context;
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public ProductController(IProductRepository context,IWebHostEnvironment webHostEnvironment)
         {
-            this._context = context;
+            this.context = context;
+            this.webHostEnvironment = webHostEnvironment;
         }
-        public IActionResult Index()
+        public IActionResult Index(int manhalID)
         {
-            _context.GetAll();
-            return View();
+            ViewData["ManhalId"] = manhalID;
+            //List<Product> product = context.GetAllBy(a => a.ManhalId == manhalID);
+
+            return View(context.GetProductsWithImage(manhalID));
+        }
+        [HttpGet]
+        public ActionResult Create(int manhalID)
+        {
+            ViewData["ManhalId"] = manhalID;
+            return View(new Product());
+        }
+        [HttpPost]
+        public ActionResult Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Add(product);
+                context.Savechange();
+                return RedirectToAction(nameof(Index), new { manhalID = product.ManhalId });
+            }
+            ViewData["ManhalId"] = product.ManhalId;
+            return View(product);
         }
         public IActionResult getbyid(int? id )
         {
-            List<Product> productsID = _context.GetAllBy(a => a.Id == id);
+            List<Product> productsID = context.GetAllBy(a => a.Id == id);
             List<Product> products = new List<Product>();
             foreach (var item in productsID)
             {
-                products.Add(_context.GetElement(item.Id));
+                products.Add(context.GetElement(item.Id));
             }
             
             return View(products);
+            //return View();
         }
-        public async Task<IActionResult> Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var product = await _context1.Products.FindAsync(id);
+            var product = context.GetElement(id.Value);
             if (product == null)
             {
                 return NotFound();
             }
-            ViewData["ManhalId"] = new SelectList(_context1.Manahels, "Id", "Id", product.ManhalId);
             return View(product);
+            //return View();
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DatePick,FlowerName,ProductName,ProductAmount,ManhalId")] Product product)
+        public ActionResult Edit(int id, [Bind("Id,DatePick,FlowerName,ProductName,ProductAmount,Containter,Description,ManhalId")] Product product)
         {
             if (id != product.Id)
             {
@@ -64,8 +89,8 @@ namespace MahaleSystem.Controllers
             {
                 try
                 {
-                    _context1.Update(product);
-                    await _context1.SaveChangesAsync();
+                    context.Updata(product);
+                    context.Savechange();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -78,22 +103,19 @@ namespace MahaleSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { manhalID = product.ManhalId });
             }
-            ViewData["ManhalId"] = new SelectList(_context1.Manahels, "Id", "Id", product.ManhalId);
             return View(product);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var product = await _context1.Products
-                .Include(p => p.Manhal)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var product = context.GetElement(id.Value);
             if (product == null)
             {
                 return NotFound();
@@ -105,18 +127,53 @@ namespace MahaleSystem.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id)
         {
-            var product = await _context1.Products.FindAsync(id);
-            _context1.Products.Remove(product);
-            await _context1.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //var product = context.GetElement(id);
+            context.DeleteProductImages(id);
+            context.Delete(id);
+            context.Savechange();
+            return RedirectToAction(nameof(Index), new { manhalID = id });
         }
 
+        [HttpGet]
+        public ActionResult AddImage(int productID)
+        {
+            AddImageVM imageVM = new AddImageVM();
+            imageVM.id = productID;
+            return View(imageVM);
+        }
+        [HttpPost]
+        public ActionResult AddImage(AddImageVM imageVM)
+        {
+            string uniqueFileName = null;
 
+            if (imageVM.imageFile != null)
+            {
+                try
+                {
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + imageVM.imageFile.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        imageVM.imageFile.CopyTo(fileStream);
+                    }                    
+                    ImagesProduct images = new ImagesProduct();
+                    images.ImagesString = uniqueFileName;
+                    images.ProductId = imageVM.id;
+                    context.AddImage(images);
+
+                    var idManhal = context.GetManahel(imageVM.id).Id;
+                    return RedirectToAction(nameof(Index), "Product", new { manhalID = idManhal });
+                }
+                catch { }
+            }
+            return View(imageVM);
+        }
         private bool ProductExists(int id)
         {
-            return _context1.Products.Any(e => e.Id == id);
+            return context.GetAll().Any(e => e.Id == id);
         }
     }
 }

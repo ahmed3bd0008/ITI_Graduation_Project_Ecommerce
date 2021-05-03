@@ -11,23 +11,25 @@ namespace MahaleSystem.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "SSN"),Required]
+        [Display(Name = "رقم الخلية"),Required]
         [Range(minimum:1,maximum:500)]
         public int Ssn { get; set; }
 
-        [Display(Name = "Khalia Level"),Required]
+        [Display(Name = "مستوى الخلية"),Required]
         public string KhaliaLevel { get; set; }
 
-        [Display(Name = "Khalia Type"),Required]
+        [Display(Name = "نوع الخلية"),Required]
         public string KhaliaType { get; set; }
 
         [Required]
+        [Display(Name = "نوع الخشب")]
         public string Wood { get; set; }
 
-        [Display(Name = "Praweez Count"), Required]
+        [Display(Name = "عدد البروايز"), Required]
         [Range(minimum:1,maximum:9)]
         public int PraweezCount { get; set; }
 
+        [Display(Name = "الملاحظة")]
         public string Notes { get; set; }
 
         [ForeignKey("Manhal")]

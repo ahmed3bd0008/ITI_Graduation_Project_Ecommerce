@@ -15,50 +15,33 @@
             <li class="nav-item active show">
                 <a class="nav-link" asp-action="Home" asp-controller="Manahels"><i class="fe fe-airplay"></i><span class="sidemenu-label">Home</span></a>
             </li>
-            <li class="nav-label">Manhale System</li>
+            @*<li class="nav-label">Manhale System</li>*@
             <li class="nav-item">
-                <a class="nav-link with-sub text-secondary" href=""><i class=" fe fe-alert-octagon"></i><span class="sidemenu-label">Manhale mangment </span></a>
+                <a class="nav-link with-sub text-secondary" href=""><i class=" fe fe-alert-octagon"></i><span class="sidemenu-label">Manahel Management </span><i class="angle fe fe-chevron-left"></i></a>
                 <ul class="nav-sub">
                     @await Component.InvokeAsync("GetManahal")
-                    @*<li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="mail.html">Manhale 1</a>
-                    </li>
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="viewmail.html">Manhale 2</a>
-                    </li>
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="viewmail.html">Manhale 3</a>
-                    </li>
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="viewmail.html">Manhale 4</a>
-                    </li>*@
                 </ul>
             </li>
-            <li class="nav-label">Products</li>
+            @*<li class="nav-label">Products</li>*@
 
             <li class="nav-item">
-                <a class="nav-link with-sub text-secondary" href=""><i class="fe fe-box"></i><span class="sidemenu-label">Product Mange</span><i class="angle fe fe-chevron-left"></i></a>
+                <a class="nav-link with-sub text-secondary" href=""><i class="fe fe-box"></i><span class="sidemenu-label">Product Management</span><i class="angle fe fe-chevron-left"></i></a>
                 <ul class="nav-sub">
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="chat.html">product1</a>
-                    </li>
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="cards.html">Product 2</a>
-                    </li>
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="calendar.html">Product3</a>
-                    </li>
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" href="contacts.html">Product4</a>
-                    </li>
+                    @await Component.InvokeAsync("GetManahal2")
                 </ul>
             </li>
-            <li class="nav-label">Mange user</li>
+            <li class="nav-label">Management user</li>
             <li class="nav-item">
                 <a class="nav-link with-sub text-secondary " href=""><i class="fe fe-settings"></i><span class="sidemenu-label">Users</span></a>
                 <ul class="nav-sub">
                     <li class="nav-sub-item">
+                        <a class="nav-sub-link text-secondary" asp-controller="Account" asp-action="AddUser">AddUser</a>
+                    </li>
+                    <li class="nav-sub-item">
                         <a class="nav-sub-link text-secondary" asp-controller="Account" asp-action="Register">Usersmange</a>
+                    </li>
+                    <li class="nav-sub-item">
+                        <a class="nav-sub-link text-secondary" asp-controller="Account" asp-action="Login">Usersmange</a>
                     </li>
                 </ul>
             </li>

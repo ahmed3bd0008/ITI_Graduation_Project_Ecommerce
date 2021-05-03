@@ -6,13 +6,13 @@
 
 <h1>Details</h1>
 
-<button id="btn1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
+<button id="btn1" class="btn btn-info" style="margin:10px" value="Show">إخفاء التفاصيل</button>
 <div id="info">
     @await Component.InvokeAsync("DisplayStatistics", Model.manhal.Id)
 </div>
 
 <!-- Row -->
-<button id="btn2" class="btn btn-info" style="margin:10px" value="Show">Hide Filter</button>
+<button id="btn2" class="btn btn-info" style="margin:10px" value="Show">إخفاء البحث</button>
 <div class="row row-sm" id="search">
     @*Filter By Khalia Level *@
     <div class="col-sm-6 col-xl-3 col-lg-6">
@@ -22,24 +22,24 @@
                     <p class="mb-1 tx-inverse">Filter By</p>
                 </div>
                 <a class="btn ripple btn-outline-primary dropdown-toggle mb-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; Khalia Level &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; مستوى الخلية &nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
                 <div class="dropdown-menu tx-13">
                     <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Excellant">
-                        Excellant Khalia
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="ممتاز">
+                        ممتاز
                     </a>
                     <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Strong">
-                        Strong Khalia
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="قوي">
+                        قوي
                     </a>
                     <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Good">
-                        Good Khalia
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="جيد">
+                        جيد
                     </a>
                     <a class="dropdown-item" asp-action="SearchLevel" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Weak">
-                        Weak Khalia
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="ضعيف">
+                        ضعيف
                     </a>
                 </div>
                 <div class="expansion-label d-flex">
@@ -56,20 +56,20 @@
                     <p class="mb-1 tx-inverse">Filter By</p>
                 </div>
                 <a class="btn ripple btn-outline-primary dropdown-toggle mb-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; Khalia Type &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i>&nbsp;&nbsp;&nbsp;&nbsp; نوع الخلية &nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
                 <div class="dropdown-menu tx-13">
                     <a class="dropdown-item" asp-action="SearchType" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Complete">
-                        Complete
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="كاملة">
+                        كاملة
                     </a>
                     <a class="dropdown-item" asp-action="SearchType" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Medium">
-                        Medium
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="طرد">
+                        طرد
                     </a>
                     <a class="dropdown-item" asp-action="SearchType" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Small">
-                        Small
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="نوية">
+                        نوية
                     </a>
                 </div>
                 <div class="expansion-label d-flex">
@@ -86,24 +86,24 @@
                     <p class="mb-1 tx-inverse">Filter By</p>
                 </div>
                 <a class="btn ripple btn-outline-primary dropdown-toggle mb-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i> &nbsp;&nbsp;&nbsp;&nbsp; Queen Status &nbsp;&nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-caret-down mr-1 mt-1 float-left"></i> &nbsp;&nbsp;&nbsp;&nbsp; حالة الملكة &nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
                 <div class="dropdown-menu tx-13">
                     <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Fertilized">
-                        Fertilized
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="مخصبة">
+                        ملقحة
                     </a>
                     <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Not Fertilized">
-                        Not Fertilized
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="عذراء">
+                        عذراء
                     </a>
                     <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Stacked">
-                        Stacked
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="مكدبة">
+                        مكدبة
                     </a>
                     <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="Without Queue">
-                        Without Queue
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="بدون ملكة">
+                        بدون ملكة
                     </a>
                 </div>
                 <div class="expansion-label d-flex">
@@ -117,7 +117,7 @@
         <div class="card custom-card">
             <div class="card-body dash1">
                 <div class="">
-                    <a asp-action="AddKhalia" asp-controller="Manahels" asp-route-idM="@Model.manhal.Id" class="btn ripple btn-secondary navresponsive-toggler mb-0">Add New Khalia</a>
+                    <a asp-action="AddKhalia" asp-controller="Manahels" asp-route-idM="@Model.manhal.Id" class="btn ripple btn-secondary navresponsive-toggler mb-0">إضافة خلية جديدة</a>
                 </div>
                 <div class="expansion-label d-flex">
                 </div>
@@ -183,13 +183,22 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Wood)
                                     </td>
+                                    
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
+                                        @{ try
+                                            {
+                                            @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
+                                            }
+                                            catch
+                                            {
+                                            }
+                                        }
+
                                     </td>
                                     <td>
                                         @{try
                                             {
-                                                if (item.Queues.QueueStatus == "Fertilized")
+                                                if (item.Queues.QueueStatus == "ملقحة")
                                                 {
                                                     string date = item.Queues.DateFertilization.Value.ToShortDateString();
                                                     @date
@@ -219,7 +228,7 @@
         <div class="card">
             <div class="card-body text-center">
                 <img class="card-img" src="~/images/@item.ImagesString" />
-                <a asp-action="DeleteImage" asp-route-idImg="@item.Id" class="card-action">Delete</a>
+                <a asp-action="DeleteImage" asp-route-idImg="@item.Id" class="card-action">حذف</a>
             </div>
         </div>
     }

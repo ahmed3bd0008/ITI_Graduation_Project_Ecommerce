@@ -44,6 +44,20 @@ namespace MahaleSystem.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "ed12f830-229f-4d20-b8dd-11908d292a46",
+                            ConcurrencyStamp = "636c7c7b-c853-4ba3-a5de-8297a0af9c7c",
+                            Name = "SuperAdmin"
+                        },
+                        new
+                        {
+                            Id = "56d16927-2bc1-4de6-aff7-a68afee72fa8",
+                            ConcurrencyStamp = "ca8c125a-6001-4eb6-aa23-d5040290ec7e",
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("MahaleSystem.Models.Identity.CustomIdentityuser", b =>
@@ -64,6 +78,9 @@ namespace MahaleSystem.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -159,9 +176,11 @@ namespace MahaleSystem.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("KhaliaLevel")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("KhaliaType")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ManhalId")
@@ -177,6 +196,7 @@ namespace MahaleSystem.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Wood")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -200,15 +220,19 @@ namespace MahaleSystem.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FlowerName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LocationName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NickName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ssn")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -223,8 +247,14 @@ namespace MahaleSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Containter")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DatePick")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FlowerName")
                         .HasColumnType("nvarchar(max)");
@@ -232,8 +262,8 @@ namespace MahaleSystem.Migrations
                     b.Property<int?>("ManhalId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductAmount")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ProductAmount")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
@@ -245,6 +275,71 @@ namespace MahaleSystem.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("MahaleSystem.Models.ProductPublish", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProdcutID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductPrice")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("datePublish")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdcutID");
+
+                    b.ToTable("ProductPublish");
+                });
+
+            modelBuilder.Entity("MahaleSystem.Models.ProductSells", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PrioductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProdcutID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductAmount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("dateSell")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdcutID");
+
+                    b.ToTable("ProductSells");
+                });
+
             modelBuilder.Entity("MahaleSystem.Models.Queue", b =>
                 {
                     b.Property<int>("Id")
@@ -253,12 +348,14 @@ namespace MahaleSystem.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime?>("DateFertilization")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<int>("KhaliaId")
                         .HasColumnType("int");
 
                     b.Property<string>("QueueStatus")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -409,7 +506,7 @@ namespace MahaleSystem.Migrations
             modelBuilder.Entity("MahaleSystem.Models.ImagesProduct", b =>
                 {
                     b.HasOne("MahaleSystem.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("ImageProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -435,6 +532,24 @@ namespace MahaleSystem.Migrations
                         .HasForeignKey("ManhalId");
 
                     b.Navigation("Manhal");
+                });
+
+            modelBuilder.Entity("MahaleSystem.Models.ProductPublish", b =>
+                {
+                    b.HasOne("MahaleSystem.Models.Product", "product")
+                        .WithMany("ProductPublishs")
+                        .HasForeignKey("ProdcutID");
+
+                    b.Navigation("product");
+                });
+
+            modelBuilder.Entity("MahaleSystem.Models.ProductSells", b =>
+                {
+                    b.HasOne("MahaleSystem.Models.Product", "product")
+                        .WithMany("ProductSell")
+                        .HasForeignKey("ProdcutID");
+
+                    b.Navigation("product");
                 });
 
             modelBuilder.Entity("MahaleSystem.Models.Queue", b =>
@@ -528,6 +643,15 @@ namespace MahaleSystem.Migrations
                     b.Navigation("Khaliases");
 
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("MahaleSystem.Models.Product", b =>
+                {
+                    b.Navigation("ImageProducts");
+
+                    b.Navigation("ProductPublishs");
+
+                    b.Navigation("ProductSell");
                 });
 #pragma warning restore 612, 618
         }

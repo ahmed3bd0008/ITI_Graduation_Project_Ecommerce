@@ -10,24 +10,25 @@ namespace MahaleSystem.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "SSN"),Required]
+        [Display(Name = "كود المنحل"),Required]
         public string Ssn { get; set; }
 
-        [Display(Name = "Manahal Name"), Required]
+        [Display(Name = "اسم المنحل"), Required]
         public string NickName { get; set; }
 
-        [Display(Name = "Location Name"), Required]
+        [Display(Name = "الموقع"), Required]
         public string LocationName { get; set; }
 
-        [Display(Name = "Flower Name"), Required]
+        [Display(Name = "اسم الزهرة"), Required]
         public string FlowerName { get; set; }
 
-        [Display(Name = "Date Created"), Required]
+        [Display(Name = "تاريخ الانشاء"), Required]
         public DateTime DateCreated { get; set; }
 
-        [Display(Name = "Date Last Updated")]
+        [Display(Name = "اخر تعديل")]
         public DateTime DateUpdated { get; set; }
-        
+
+        [Display(Name = "صورة المنحل")]
         public virtual List<ImagesManahel> ImageManhals { get; set; }
         public virtual List<Khalias> Khaliases { get; set; }
         public virtual List<Product> Products { get; set; }

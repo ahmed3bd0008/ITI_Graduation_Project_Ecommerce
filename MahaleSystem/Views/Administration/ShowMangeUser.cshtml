@@ -1,0 +1,108 @@
+﻿@model UserMangment
+@{ 
+    string id = Model.Id;
+}
+<div class=" custom-card">
+    <div class="card-header">
+        <h4>Mange User</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-8">
+                <button data-target="#changeUserName" data-toggle="modal"onclick="openGetChangeNameView('@id')">change User name</button>
+                <button data-target="#changePassword" data-toggle="modal" onclick="openGetChangePasswordView('@id')"> change Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" custom-card">
+    <div class="card-header">
+        <h4>Mange User</h4>
+        <button data-target="#changeClaims" data-toggle="modal"onclick="openGetAllClaimsView('@id')">add claims</button>
+    </div>
+    <div class="card-body">
+        <div class="row">
+
+            <div class="col-8">
+                <h3> <span class="badge badge-dark">what can this user  do</span></h3>
+                @foreach (var item in Model.Claims)
+                {
+                    <h4> <span class="badge badge-dark">@item</span></h4>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="changePassword">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Change Password</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="modal-footer">
+                    <button class="btn ripple btn-primary" type="button">Save changes</button>
+                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal" id="changeUserName">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-demo" id="ChangeUserNameDiv">
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="changeClaims">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-demo" id="changeClaimsId">
+        </div>
+    </div>
+</div>
+<script>
+    openGetAllClaimsView = (id) => {
+        $.ajax(
+            {
+                type: 'get',
+                url: '/Administration/GetAllClaims',
+                data: { "id": id },
+                success: function (res) {
+                    $('#changeClaimsId').html(res);
+                    $('#changeClaims').modal("show");
+                }
+            });
+
+    }
+    openGetChangeNameView = (id) => {
+        $.ajax(
+            {
+                type: 'get',
+                url: '/Administration/ChangeuserName',
+                data: { "id": id },
+                success: function (res) {
+                    $('#ChangeUserNameDiv').html(res);
+                    $('#ChangeUserNameDiv').modal("show");
+                }
+            });
+
+    }
+    openGetChangePasswordView = (id) => {
+        $.ajax(
+            {
+                type: 'get',
+                url: '/Administration/ChangeUserPassword',
+                data: { "Id": id },
+                success: function (res) {
+                    $('#ChangeUserNameDiv').html(res);
+                    $('#ChangeUserNameDiv').modal("show");
+                }
+            });
+
+    }
+
+</script>

@@ -4,8 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 @*<div class="card">
     @(await Html.RenderComponentAsync<MahaleSystem.Views.Shared.Components.FirstBlazor>(RenderMode.WebAssemblyPrerendered))
 </div>*@
@@ -19,7 +17,7 @@
     <!-- Page Header -->
     <div class="page-header">
         <div>
-            <h2 class="main-content-title tx-24 mg-b-5">This Is Home Page</h2>
+            <h2 class="main-content-title tx-24 mg-b-5"></h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">this Display All Details for all Manahel</li>
@@ -64,37 +62,55 @@
                                         @Html.DisplayNameFor(model => model.DateUpdated)
                                     </th>
                                     <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Ssn)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.NickName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.LocationName)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.FlowerName)
-                                        </td>
-                                        <td>
-                                            @{ string txt = item.DateCreated.ToShortDateString();}
-                                            @txt
-                                        </td>
-                                        <td>
-                                            @{ string txt2 = item.DateUpdated.ToShortDateString();}
-                                            @txt2
-                                        </td>
-                                        <td class="btn-group">
-                                            <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>
-                                            <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ssn)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NickName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LocationName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FlowerName)
+                                    </td>
+                                    <td>
+                                        @{ string txt = item.DateCreated.ToShortDateString();}
+                                        @txt
+                                    </td>
+                                    <td>
+                                        @{ string txt2 = item.DateUpdated.ToShortDateString();}
+                                        @txt2
+                                    </td>
+                                    <td>
+                                        @{ var imgString = "";
+                                            try
+                                            {
+                                                imgString = @item.ImageManhals.FirstOrDefault().ImagesString;
+                                                if (imgString == null)
+                                                    imgString = "~/assets/img/users/2.jpg";
+                                                else
+                                                    imgString = "~/images/" + imgString;
+                                            }
+                                            catch { imgString = "~/assets/img/users/2.jpg"; }
+                                        }
+                                        <img src=@imgString class="rounded-circle" />
+                                    </td>
+                                    <td class="btn-group">
+                                        <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>
+                                    </td>
+                                    <td>
+                                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

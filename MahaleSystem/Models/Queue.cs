@@ -11,10 +11,10 @@ namespace MahaleSystem.Models
     {
         public int Id { get; set; }
 
-        [Display(Name="Queen Status"),Required]
+        [Display(Name="حالة الملكة"),Required]
         public string QueueStatus { get; set; }
 
-        [Display(Name = "Date Fertilization"),Required]
+        [Display(Name = "تاريخ التخصيب"),Required]
         public DateTime? DateFertilization { get; set; }
         [ForeignKey("Khalia")]
         public int KhaliaId { get; set; }

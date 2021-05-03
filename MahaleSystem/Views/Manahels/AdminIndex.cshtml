@@ -4,8 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
 <button id="btnA1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
 <div id="infoA">
     @await Component.InvokeAsync("DisplayAllStatistics", Model.ToList())
@@ -17,7 +15,7 @@
         <div class="card custom-card">
             <div class="card-body">
                 <div>
-                    <h6 class="card-title mb-1">Display All Manahel</h6>
+                    <h6 class="card-title mb-1">عرض التفاصيل لكل المناحل</h6>
                     <p class="text-muted card-sub-title"></p>
                 </div>
                 <div class="table-responsive">
@@ -42,6 +40,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.DateUpdated)
                                 </th>
+                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -68,6 +67,20 @@
                                     <td>
                                         @{ string txt2 = item.DateUpdated.ToShortDateString();}
                                         @txt2
+                                    </td>
+                                    <td>
+                                        @{ var imgString = "";
+                                            try
+                                            {
+                                                imgString= @item.ImageManhals.FirstOrDefault().ImagesString;
+                                                if (imgString == null)
+                                                    imgString = "~/assets/img/users/2.jpg";
+                                                else
+                                                    imgString = "~/images/" + imgString;
+                                            }
+                                            catch { imgString = "~/assets/img/users/2.jpg"; }
+                                         }
+                                        <img src=@imgString class="rounded-circle" />
                                     </td>
                                     <td>
                                         <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>
