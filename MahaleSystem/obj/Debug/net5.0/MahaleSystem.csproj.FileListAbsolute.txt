@@ -194,3 +194,4 @@ D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\DisplaySells.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\DisplayPublishs.cshtml.g.cs
 D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Shared\Components\DisplayProductStatistics\DisplayProductStatistics.cshtml.g.cs
+D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Product\DisplayPublishToClient.cshtml.g.cs

@@ -8,7 +8,7 @@
     @(await Html.RenderComponentAsync<MahaleSystem.Views.Shared.Components.FirstBlazor>(RenderMode.WebAssemblyPrerendered))
 </div>*@
 
-<button id="btnS1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
+<button id="btnS1" class="btn btn-info" style="margin:10px" value="Show">إخفاء الاحصائيات</button>
 <div id="infoS">
     @await Component.InvokeAsync("DisplayAllStatistics", Model.ToList())
 </div>
@@ -19,8 +19,8 @@
         <div>
             <h2 class="main-content-title tx-24 mg-b-5"></h2>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">this Display All Details for all Manahel</li>
+                <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+                <li class="breadcrumb-item active" aria-current="page">عرض تفاصيل كل المناحل</li>
             </ol>
         </div>
         <div class="d-flex">
@@ -37,7 +37,7 @@
             <div class="card custom-card overflow-hidden">
                 <div class="card-body">
                     <div>
-                        <h6 class="card-title mb-1">Display All Manahels</h6>
+                        <h6 class="card-title mb-1">عرض كل المناحل</h6>
                     </div>
                     <div class="table-responsive">
                         <table id="exportexample" class="table table-bordered border-t0 key-buttons text-nowrap w-100">
@@ -61,7 +61,7 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.DateUpdated)
                                     </th>
-                                    <th></th>
+                                    <th>صورة المنحل</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -105,10 +105,10 @@
                                         <img src=@imgString class="rounded-circle" style="width:70px" />
                                     </td>
                                     <td class="btn-group">
-                                        <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>
+                                        <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">تعديل</a>
                                     </td>
                                     <td>
-                                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
+                                        <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">حذف</a>
                                     </td>
                                 </tr>
                                 }
@@ -128,11 +128,11 @@
             $("#btnS1").click(function () {
                 $("#infoS").fadeToggle("slow");
                 if (b1 == false) {
-                    document.getElementById("btnS1").innerHTML = "Show Statistical";
+                    document.getElementById("btnS1").innerHTML = "عرض الاحصائيات";
                     b1 = true;
                 }
                 else {
-                    document.getElementById("btnS1").innerHTML = "Hide Statistical";
+                    document.getElementById("btnS1").innerHTML = "إخفاء الاحصائيات";
                     b1 = false;
                 }
             });

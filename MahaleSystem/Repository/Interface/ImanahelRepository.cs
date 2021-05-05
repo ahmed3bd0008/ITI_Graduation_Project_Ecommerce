@@ -26,5 +26,6 @@ namespace MahaleSystem.Repository.Interface
         public Tuple<List<InfoVM>[], int> getStatistics(int id_manahal);
         public int GetKhlaiaStatistics(int id_khalia);
         public Tuple<List<InfoVM>[], int> GetStatisticForManahalList(List<Manahel> manahels);
+        public void DeleteManhalImages(int idManhal);
     }
 }

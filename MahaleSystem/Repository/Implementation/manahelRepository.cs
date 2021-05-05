@@ -1,9 +1,11 @@
 ﻿using MahaleSystem.Models;
 using MahaleSystem.Repository.Interface;
 using MahaleSystem.ViewModel.Manahel;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,10 +15,12 @@ namespace MahaleSystem.Repository.Implementation
     {
         private readonly ManahelContext context;
         private readonly DbSet<Manahel> entities;
-        public manahelRepository(ManahelContext _context):base(_context)
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public manahelRepository(ManahelContext _context,IWebHostEnvironment webHostEnvironment):base(_context)
         {
             context = _context;
             entities = context.Set<Manahel>();
+            this.webHostEnvironment = webHostEnvironment;
         }
         public async Task<bool> Is_SSN_Exist(string ssn,string AccountID)
         {
@@ -337,7 +341,6 @@ namespace MahaleSystem.Repository.Implementation
             catch { }
             return new Tuple<List<InfoVM>[], int>(t, parcent);
         }
-
         public List<InfoVM>[] Initial()
         {
             List<InfoVM>[] t = new List<InfoVM>[3];
@@ -368,6 +371,27 @@ namespace MahaleSystem.Repository.Implementation
             t[2] = t3;
 
             return t;
+        }
+        public void DeleteManhalImages(int idManhal)
+        {
+            var imgs = context.ImagesManahels.Where(a => a.ManahelId == idManhal).ToList();
+            foreach (var item in imgs)
+            {
+                string imgName = item.ImagesString;
+                context.ImagesManahels.Remove(item);
+                context.SaveChanges();
+                try
+                {
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                    var path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), uploadsFolder, imgName);
+
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                }
+                catch { }
+            }
         }
 
         //public List<Tuple<string, double>> GetKhaliaCount(int id_Manahal)

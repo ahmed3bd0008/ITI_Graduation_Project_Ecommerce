@@ -3,15 +3,14 @@
 @{
     ViewData["Title"] = "Edit";
 }
-<h1>Edit Khalia </h1>
-<hr />
+<h1 class="text-center">تعديل بيانات الخلية </h1>
 
 <div class="row">
     <div class="col-sm-12 col-xl-12 col-lg-12">
         <div class="card custom-card">
             <div class="card-body dash1">
                 <div class="d-flex">
-                    <p class="mb-1 tx-inverse">The general average of the Khalia</p>
+                    <p class="mb-1 tx-inverse">المتوسط العام للخلية</p>
                     <div class="mr-auto">
                         <i class="fas fa-chart-line fs-20 text-primary"></i>
                     </div>
@@ -61,7 +60,7 @@
             </div>
             <div class="col-sm-6 col-xl-4 col-lg-6">
                 <label asp-for="PraweezCount" class="control-label"></label>
-                <input asp-for="PraweezCount" name="PraweezCount" class="form-control" />
+                <input asp-for="PraweezCount" name="PraweezCount" class="form-control" type="number" />
                 <span asp-validation-for="PraweezCount" class="text-danger"></span>
             </div>
             <div class="col-sm-6 col-xl-4 col-lg-6">
@@ -75,7 +74,7 @@
         <input type="hidden" name="Id" asp-for="Id" />
 
         <div class="row container">
-            <input type="submit" value="Save Changes Khalia" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
+            <input type="submit" value="حفظ تعديلات الخلية" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
         </div>
     </form>
 
@@ -88,14 +87,14 @@
             </div>
             <div class="col-sm-6 col-xl-6 col-lg-6">
                 <label asp-for="Queues.DateFertilization" class="control-label"></label>
-                <input class="form-control" asp-for="Queues.DateFertilization" name="DateFertilization" placeholder="Enter Date Created" required type="date">
+                <input class="form-control" asp-for="Queues.DateFertilization" name="DateFertilization" required type="date">
                 <span asp-validation-for="Queues.DateFertilization" class="text-danger"></span>
             </div>
         </div>
         <input type="hidden" name="Id" asp-for="Queues.Id" />
         <input type="hidden" name="KhaliaId" asp-for="Id" />
         <div class="row container">
-            <input type="submit" value="Save Changes Queue" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
+            <input type="submit" value="حفظ تعديلات الملكة" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
         </div>
     </form>
 </div>
@@ -104,7 +103,7 @@
 <br />
 <div class="container row">
     <a asp-action="DeleteKhalia" asp-controller="Manahels" asp-route-id="@Model.Id" class="btn btn-danger col-10 offset-2">
-        Delete this Khalia
+        حذف هذه الخلية
     </a>
 </div>
 

@@ -10,7 +10,7 @@
         <div class="row" style="margin:15px;">
             <div class="col-sm-6 col-xl-4 col-lg-6">
                 <label asp-for="Ssn"></label>
-                <input asp-for="Ssn" name="Ssn" class="form-control" />
+                <input asp-for="Ssn" name="Ssn" class="form-control" type="number" />
                 <span asp-validation-for="Ssn" class="text-danger"></span>
             </div>
             <div class="col-sm-6 col-xl-4 col-lg-6">
@@ -33,7 +33,7 @@
             </div>
             <div class="col-sm-6 col-xl-4 col-lg-6">
                 <label asp-for="PraweezCount" class="control-label"></label>
-                <input asp-for="PraweezCount" name="PraweezCount" class="form-control" />
+                <input asp-for="PraweezCount" name="PraweezCount" class="form-control" type="number" />
                 <span asp-validation-for="PraweezCount" class="text-danger"></span>
             </div>
             <div class="col-sm-6 col-xl-4 col-lg-6">
@@ -51,7 +51,7 @@
             </div>
             <div class="col-sm-6 col-xl-4 col-lg-6">
                 <label asp-for="DateFertilization" class="control-label"></label>
-                <input class="form-control" asp-for="DateFertilization" name="DateFertilization" placeholder="Enter Date Created" required type="date">
+                <input class="form-control" asp-for="DateFertilization" name="DateFertilization" placeholder="تاريخ الانشاء" required type="date">
                 <span asp-validation-for="DateFertilization" class="text-danger"></span>
             </div>
         </div>
@@ -59,7 +59,7 @@
         <input type="hidden" asp-for="ManhalId" value=@ViewBag.ManhalId />
 
         <div class="row">
-            <input type="submit" value="Add" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
+            <input type="submit" value="إضافة خلية" class="btn btn-success offset-1" style="width:400px;outline:none;border-radius:20px" />
         </div>
     </form>
 </div>

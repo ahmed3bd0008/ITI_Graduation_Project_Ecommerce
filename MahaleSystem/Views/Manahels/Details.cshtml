@@ -181,11 +181,11 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Wood)
                                     </td>
-                                    
+
                                     <td>
                                         @{ try
                                             {
-                                            @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
+                                                @Html.DisplayFor(modelItem => item.Queues.QueueStatus)
                                             }
                                             catch
                                             {
@@ -206,10 +206,10 @@
                                         }
                                     </td>
                                     <td>
-                                        <a asp-action="EditKhalia" asp-controller="Manahels" asp-route-id="@item.Id">تحرير</a>
+                                        <a asp-action="EditKhalia" asp-controller="Manahels" asp-route-id="@item.Id">تعديل</a>
                                     </td>
                                 </tr>
-                             }
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -244,23 +244,81 @@
                 </div>
             </div>-->
             @*<div class="form-group">
-                <label class="control-label">Choose Image</label>
-                <div class="custom-file">
-                    <input type="file" name="imageFile" class="custom-file-input dropify" id="customFile">
-                    <label class="custom-file-label" for="customFile">Choose file</label>
-                </div>
-                <span class="text-danger"></span>
-            </div>*@
+                    <label class="control-label">Choose Image</label>
+                    <div class="custom-file">
+                        <input type="file" name="imageFile" class="custom-file-input dropify" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    <span class="text-danger"></span>
+                </div>*@
             <!--<div>
                 <button type="button" id="btnAddImage" onclick="btnImage(); alert('aaaa'); " value="Add New Image" class="btn btn-success">Add New Image</button>
             </div>-->
-            
+
             @Html.Partial("_AddManhalImage", ViewData["ManhalImage"]);
         </div>
     </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        var b1 = false, b2 = false, b3 = false, b4 = false;
+        $("#btn1").click(function () {
+            $("#info").fadeToggle("slow");
+            if (b1 == false) {
+                document.getElementById("btn1").innerHTML = "عرض التفاصيل";
+                b1 = true;
+            }
+            else {
+                document.getElementById("btn1").innerHTML = "إخفاء التفاصيل";
+                b1 = false;
+            }
+        });
+        $("#btn2").click(function () {
+            $("#search").fadeToggle("slow");
+            if (b2 == false) {
+                document.getElementById("btn2").innerHTML = "عرض البحث";
+                b2 = true;
+            }
+            else {
+                document.getElementById("btn2").innerHTML = "إخفاء البحث";
+                b2 = false;
+            }
+        });
+        $("#btn3").click(function () {
+            $("#divTable").fadeToggle("slow");
+            if (b3 == false) {
+                document.getElementById("btn3").innerHTML = "عرض جدول الخلايا";
+                b3 = true;
+            }
+            else {
+                document.getElementById("btn3").innerHTML = "إخفاء جدول الخلايا";
+                b3 = false;
+            }
+        });
+        $("#btn4").click(function () {
+            $("#divImages").fadeToggle("slow");
+            if (b4 == false) {
+                document.getElementById("btn4").innerHTML = "عرض الصور";
+                b4 = true;
+            }
+            else {
+                document.getElementById("btn4").innerHTML = "إخفاء الصور";
+                b4 = false;
+            }
+        });
+    });
+</script>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
 
 <script>
     $(document).ready(function () {
@@ -297,104 +355,3 @@
         }
     });
 </script>
-
-<script>
-    $(document).ready(function () {
-        var b1 = false, b2 = false, b3 = false, b4 = false;
-        $("#btn1").click(function () {
-            $("#info").fadeToggle("slow");
-            if (b1 == false) {
-                document.getElementById("btn1").innerHTML = "Show Statistical";
-                b1 = true;
-            }
-            else {
-                document.getElementById("btn1").innerHTML = "Hide Statistical";
-                b1 = false;
-            }
-        });
-        $("#btn2").click(function () {
-            $("#search").fadeToggle("slow");
-            if (b2 == false) {
-                document.getElementById("btn2").innerHTML = "Show Search";
-                b2 = true;
-            }
-            else {
-                document.getElementById("btn2").innerHTML = "Hide Search";
-                b2 = false;
-            }
-        });
-        $("#btn3").click(function () {
-            $("#divTable").fadeToggle("slow");
-            if (b3 == false) {
-                document.getElementById("btn3").innerHTML = "Show Khalia Table";
-                b3 = true;
-            }
-            else {
-                document.getElementById("btn3").innerHTML = "Hide Khalia Table";
-                b3 = false;
-            }
-        });
-        $("#btn4").click(function () {
-            $("#divImages").fadeToggle("slow");
-            if (b4 == false) {
-                document.getElementById("btn4").innerHTML = "Show Images";
-                b4 = true;
-            }
-            else {
-                document.getElementById("btn4").innerHTML = "Hide Images";
-                b4 = false;
-            }
-        });
-    });
-</script>
-
-
-<!-- End Row -->
-<div class="container mr-2">
-    <h4>Manahel</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.manhal.Ssn)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.manhal.Ssn)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.manhal.NickName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.manhal.NickName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.manhal.LocationName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.manhal.LocationName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.manhal.FlowerName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.manhal.FlowerName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.manhal.DateCreated)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.manhal.DateCreated)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.manhal.DateUpdated)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.manhal.DateUpdated)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.manhal.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
-
-

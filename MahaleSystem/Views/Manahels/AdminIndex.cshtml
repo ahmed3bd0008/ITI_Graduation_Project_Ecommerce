@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<button id="btnA1" class="btn btn-info" style="margin:10px" value="Show">Hide Statistical</button>
+<button id="btnA1" class="btn btn-info" style="margin:10px" value="Show">إخفاء التفاصيل</button>
 <div id="infoA">
     @await Component.InvokeAsync("DisplayAllStatistics", Model.ToList())
 </div>
@@ -83,7 +83,7 @@
                                         <img src=@imgString class="rounded-circle" style="width:70px" />
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">Edit</a>
+                                        <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.Id">تعديل</a>
                                     </td>
                                 </tr>
                             }
@@ -102,11 +102,11 @@
         $("#btnA1").click(function () {
             $("#infoA").fadeToggle("sl");
             if (b1 == false) {
-                document.getElementById("btnA1").innerHTML = "Show Statistical";
+                document.getElementById("btnA1").innerHTML = "عرض التفاصيل";
                 b1 = true;
             }
             else {
-                document.getElementById("btnA1").innerHTML = "Hide Statistical";
+                document.getElementById("btnA1").innerHTML = "إخفاء التفاصيل";
                 b1 = false;
             }
         });

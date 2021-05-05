@@ -280,6 +280,7 @@ namespace MahaleSystem.Controllers
                     }
                     catch { }
                 }
+                context1.DeleteManhalImages(id);
                 context1.Delete(id);
                 context1.Savechange();
                 var userManhal = contextuser.GetAllBy(a => a.ManelId == id).FirstOrDefault();
