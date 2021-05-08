@@ -1,0 +1,52 @@
+﻿@model List<MahaleSystem.ViewModel.Product.PublishClientVM>
+@{ 
+    ViewBag.Title = "Poducts";
+    Layout = null;
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                product name
+            </th>
+            <th>product Price</th>
+            <th>product description</th>
+            <th>Flower Name</th>
+            <th>Date of Production</th>
+            <th>Product Image</th>
+            <th>contact us</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.product.ProductName
+                </td>
+                <td>@item.productPublished.ProductPrice</td>
+                <td>@item.productPublished.Description</td>
+                <td>@item.product.FlowerName</td>
+                <td>@item.product.DatePick</td>
+                <td>
+                    @{
+                        var imgString = "";
+                        try
+                        {
+                            imgString = item.product.ImageProducts.FirstOrDefault().ImagesString;
+                            if (imgString == null)
+                                imgString = "../../assets/img/users/2.jpg";
+                            else
+                                imgString = "../../images/" + imgString;
+
+                        }
+                        catch { imgString = "../../assets/img/users/2.jpg"; }
+                    }
+                    <img alt="avatar" class="rounded-circle" src=@imgString style="width:100px; height:100px">
+                </td>
+                <td>@item.admin.PhoneNumber - @item.admin.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,155 @@
+﻿@model MahaleSystem.ViewModel.Product.PublishClientVM
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>products Details</h2>
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li>product Details</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Breadcrumbs -->
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-7">
+                    <div class="portfolio-details-slider swiper-container">
+                        <div class="swiper-wrapper align-items-center">
+                            @{ var imgString = "";
+                                try
+                                {
+                                    var imgs = Model.product.ImageProducts.ToList();
+                                    if (imgs != null)
+                                    {
+                                        foreach (var item in imgs)
+                                        {
+                                            imgString = item.ImagesString;
+                                            if (imgString == null)
+                                                imgString = "../../assets/img/users/2.jpg";
+                                            else
+                                                imgString = "../../images/" + imgString;
+                                            <div class="swiper-slide">
+                                                <img src=@imgString data-gallery="portfolioGallery" class="img-fluid" style="height:400px" />
+                                                <!--<img src="assets/img/portfolio/portfolio-1.jpg" alt="">product image-->
+                                            </div>
+                                        }
+                                    }
+                                }
+                                catch { 
+                                    imgString = "../../assets/img/users/2.jpg";
+                                    <div class="swiper-slide">
+                                        <img src=@imgString data-gallery="portfolioGallery" class="img-fluid" style="height:400px" />
+                                        <!--<img src="assets/img/portfolio/portfolio-1.jpg" alt="">product image-->
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <style>
+                    .spanInfo{
+                        border:1px solid #000;
+                        margin-left:5px;
+                        padding:2px 5px;
+                    }
+                </style>
+                <div class="col-lg-5">
+                    <div class="portfolio-info">
+                        <h3>product information</h3>
+                        <ul>
+                            @{ string dte = @Model.productPublished.datePublish.ToShortDateString();}
+                            <li><strong>product name:</strong>
+                            <span class="spanInfo">@Model.productPublished.ProductName</span></li>
+                            <li><strong>product price:</strong>
+                                <span class="spanInfo">@Model.productPublished.ProductPrice</span></li>
+                            <li><strong>product description: </strong>
+                                <span class="spanInfo">@Model.productPublished.Description</span></li>
+                            <li><strong>Flower Name:</strong>
+                                <span class="spanInfo">@Model.product.FlowerName</span></li>
+                            <li><strong>Date of Production:</strong>
+                                <span class="spanInfo">@dte</span></li>
+                            <li><strong>Contact with Phone Number:</strong>
+                                <span class="spanInfo">@Model.admin.PhoneNumber</span></li>
+                            <li><strong>Email:</strong>
+                                <span class="spanInfo">@Model.admin.Email</span></li>
+                        </ul>
+                    </div>
+                    <!-- <div class="portfolio-description">
+                        <h2>This is an example of product detail</h2>
+                        <p>
+                          Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                        </p>
+                      </div>
+                    </div> -->
+
+                </div>
+
+            </div>
+            </div>
+    </section><!-- End Portfolio Details Section -->
+
+</main><!-- End #main -->
+
+<section id="contact" class="contact">
+    <div class="container">
+
+        <div class="section-title">
+            <h2 style="color: #b85c11;"> تواصل معنا للطلب او الاستعلام</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-8 d-flex align-items-stretch">
+                <div class="info">
+                    <div class="address">
+                        <i class="bi bi-geo-alt"></i>
+                        <h4>Location:</h4>
+                        <p> ميدان المحطه_ مركز مغاغه_ محافظه المنيا</p>
+                    </div>
+
+                    <div class="email">
+                        <i class="bi bi-envelope"></i>
+                        <h4>Email:</h4>
+                        <p>sam.team@example.com</p>
+                    </div>
+
+                    <div class="phone">
+                        <i class="bi bi-phone"></i>
+                        <h4>Call:</h4>
+                        <p>+201011273949</p>
+                    </div>
+                    <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=%D9%85%D9%8A%D8%AF%D8%A7%D9%86%20%D8%A7%D9%84%D9%85%D8%AD%D8%B7%D9%87,%20maghagha&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe><a href="https://www.whatismyip-address.com/divi-discount/"></a><br>
+                    <style>
+                        .mapouter {
+                            position: relative;
+                            text-align: right;
+                            height: 500px;
+                            width: 600px;
+                        }
+                    </style><a href="https://www.embedgooglemap.net">google map website embed</a>
+                    <style>
+                        .gmap_canvas {
+                            overflow: hidden;
+                            background: none !important;
+                            height: 300px;
+                            width: 400px;
+                        }
+                    </style></div></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

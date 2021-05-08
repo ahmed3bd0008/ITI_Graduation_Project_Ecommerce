@@ -1,0 +1,39 @@
+﻿@model MahaleSystem.ViewModel.Manahel.AddImageVM
+@{ 
+    
+}
+<br /><br /><br />
+<form enctype="multipart/form-data" asp-action="AddImage" asp-controller="Product">
+    <div class="hidden">
+        <input type="hidden" asp-for="id" class="hidden bootstrap-switch-readonly">
+    </div>
+    <!-- Row -->
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div>
+                        <h6 class="card-title mb-1">تحميل صورة </h6>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-sm-12 col-md-4">
+                            <input asp-for="imageFile" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="200" required />
+                            <span asp-validation-for="imageFile" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+    @*<div class="form-group">
+            <label asp-for="imageFile" class="control-label"></label>
+            <div class="custom-file">
+                <input asp-for="imageFile" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>*@
+    <div class="row">
+        <input type="submit" id="btnAddImage" value="إضافة الصورة" style="border-radius:20px;outline:none" class="btn btn-success col-5" />
+    </div>
+</form>

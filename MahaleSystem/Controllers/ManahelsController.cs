@@ -73,7 +73,6 @@ namespace MahaleSystem.Controllers
         public ActionResult Details(int id)
         {
             ViewData["ManhalImage"] = new AddImageVM() { id = id, imageFile = null };
-            ViewData["GeneralAverage"] = 66;
             Manahel manahel = context1.GetElement(id);
             if (manahel != null)
             {
@@ -113,11 +112,13 @@ namespace MahaleSystem.Controllers
             Manahel manahel = context1.GetElement(id);
             if (manahel != null)
             {
-                List<Khalias> khalias = context1.GetKhaliases(id).Where(a => a.Queues.QueueStatus == txtSearch).ToList();
+                //List<Khalias> khalias = context1.GetKhaliases(id);
+                //var kh = khalias.Where(a => a.Queues.QueueStatus == txtSearch).ToList();
+
                 List<ImagesManahel> images = context1.GetImages(id);
                 ManhalDetailsVM detailsVM = new ManhalDetailsVM();
                 detailsVM.manhal = manahel;
-                detailsVM.khalias = khalias;
+                detailsVM.khalias = context1.SearchQS(id, txtSearch);
                 detailsVM.imagesManahels = images;
 
                 return View(nameof(Details), detailsVM);
@@ -351,6 +352,12 @@ namespace MahaleSystem.Controllers
             }
             return RedirectToAction("Details", "Manahels", new { id = imageVM.id });
         }
+        public ActionResult DeleteImage(int idImg, int id)
+        {
+            ImagesManahel image =  context1.GetImages(id).Where(a => a.Id == idImg).FirstOrDefault();
+            context1.DeleteImage(idImg);
+            return RedirectToAction(nameof(Details), new { id = id });
+        }
         public ActionResult AddImage2(int id, IFormFile imageFile)
         {
             string uniqueFileName = null;
@@ -470,22 +477,22 @@ namespace MahaleSystem.Controllers
         private void ViewBagData()
         {
             List<string> KhaliaLevel = new List<string>();
-            KhaliaLevel.Add("Excellent"); KhaliaLevel.Add("Strong");
-            KhaliaLevel.Add("Medium"); KhaliaLevel.Add("Weak");
+            KhaliaLevel.Add("ممتاز"); KhaliaLevel.Add("قوي");
+            KhaliaLevel.Add("جيد"); KhaliaLevel.Add("ضعيف");
             ViewData["KhaliaLevel"] = new SelectList(KhaliaLevel);
 
             List<string> KhaliaType = new List<string>();
-            KhaliaType.Add("Complete"); KhaliaType.Add("Medium");
-            KhaliaType.Add("Small");
+            KhaliaType.Add("كاملة"); KhaliaType.Add("طرد");
+            KhaliaType.Add("نوية");
             ViewData["KhaliaType"] = new SelectList(KhaliaType);
 
             List<string> woodType = new List<string>();
-            woodType.Add("New"); woodType.Add("Old");
+            woodType.Add("جديد"); woodType.Add("قديم");
             ViewData["woodType"] = new SelectList(woodType);
 
             List<string> QueueStatus = new List<string>();
-            QueueStatus.Add("Fertilized"); QueueStatus.Add("not Fertilized");
-            QueueStatus.Add("Stacked"); QueueStatus.Add("without Queue");
+            QueueStatus.Add("ملقحة"); QueueStatus.Add("عذراء");
+            QueueStatus.Add("مكدبة"); QueueStatus.Add("بدون ملكة");
             ViewData["QueueStatus"] = new SelectList(QueueStatus);
 
         }

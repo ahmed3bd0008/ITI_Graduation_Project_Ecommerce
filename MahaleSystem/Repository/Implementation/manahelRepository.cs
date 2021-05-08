@@ -96,12 +96,40 @@ namespace MahaleSystem.Repository.Implementation
         }
         public List<Khalias> GetKhaliases(int id_Manahal)
         {
-            Manahel manahel = entities.Find(id_Manahal);
+            Manahel manahel = context.Manahels.Where(a => a.Id == id_Manahal).FirstOrDefault();
             List<Khalias> khaliases = new List<Khalias>();
             if (manahel != null)
             {
                 khaliases = context.khaliases.Where(a => a.ManhalId == id_Manahal)
                                               .Include(x => x.Queues).ToList();
+                //foreach (var item in khaliases)
+                //{
+                //    var queue = context.Queues.Where(a => a.KhaliaId == item.Id).FirstOrDefault();
+                //    if (queue != null)
+                //        item.Queues = queue;
+                //}
+                //Svar queue = context.Queues.Where(a => a.KhaliaId == khaliases.First().Id).First();
+
+            }
+            return khaliases;
+        }
+        public List<Khalias> SearchQS(int id_Manahal,string txtSearch)
+        {
+            Manahel manahel = context.Manahels.Where(a => a.Id == id_Manahal).FirstOrDefault();
+            List<Khalias> khaliases = new List<Khalias>();
+            if (manahel != null)
+            {
+                khaliases = context.khaliases.Where(a => a.ManhalId == id_Manahal)
+                                              .Include(x => x.Queues).
+                                              Where(a => a.Queues.QueueStatus == txtSearch).ToList();
+                //foreach (var item in khaliases)
+                //{
+                //    var queue = context.Queues.Where(a => a.KhaliaId == item.Id).FirstOrDefault();
+                //    if (queue != null)
+                //        item.Queues = queue;
+                //}
+                //Svar queue = context.Queues.Where(a => a.KhaliaId == khaliases.First().Id).First();
+
             }
             return khaliases;
         }
@@ -227,23 +255,24 @@ namespace MahaleSystem.Repository.Implementation
         }
         public int GetKhlaiaStatistics(int id_khalia)
         {
-            var khalia = context.khaliases.Where(a => a.Id == id_khalia).FirstOrDefault();
+            var khalia = context.khaliases.Where(a => a.Id == id_khalia)
+                                        .Include(x => x.Queues).FirstOrDefault();
             int max = 12;// 4 Level + 4 Type + 4 QueueStatus
             if (khalia != null)
             {
                 int statistic = 0;
                 switch (khalia.KhaliaLevel)
                 {
-                    case "Excellent":
+                    case "ممتاز":
                         statistic += 4;
                         break;
-                    case "Strong":
+                    case "قوي":
                         statistic += 3;
                         break;
-                    case "Good":
+                    case "جيد":
                         statistic += 2;
                         break;
-                    case "Weak":
+                    case "ضعيف":
                         statistic += 1;
                         break;
                     default:
@@ -251,37 +280,40 @@ namespace MahaleSystem.Repository.Implementation
                 }
                 switch (khalia.KhaliaType)
                 {
-                    case "Complete":
+                    case "كاملة":
                         statistic += 4;
                         break;
-                    case "Medium":
+                    case "طرد":
                         statistic += 3;
                         break;
-                    case "Small":
+                    case "نوية":
                         statistic += 2;
                         break;
                     default:
                         break;
                 }
-                switch (khalia.Queues.QueueStatus)
+                if (khalia.Queues != null)
                 {
-                    case "Fertilized":
-                        int dateFert = khalia.Queues.DateFertilization.Value.Year;
-                        int dateNow = DateTime.Now.Year;
-                        if ((dateNow - dateFert) < 2)
-                            statistic += 4;
-                        else
-                            statistic += 3;
-                        break;
-                    case "Not Fertilized":
-                        statistic += 2;
-                        break;
-                    case "Stacked":
-                    case "Without Queue":
-                        statistic += 1;
-                        break;
-                    default:
-                        break;
+                    switch (khalia.Queues.QueueStatus)
+                    {
+                        case "ملقحة":
+                            int dateFert = khalia.Queues.DateFertilization.Value.Year;
+                            int dateNow = DateTime.Now.Year;
+                            if ((dateNow - dateFert) < 2)
+                                statistic += 4;
+                            else
+                                statistic += 3;
+                            break;
+                        case "عذراء":
+                            statistic += 2;
+                            break;
+                        case "مكدبة":
+                        case "بدون ملكة":
+                            statistic += 1;
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 statistic = (statistic * 100) / max;
                 return statistic;
@@ -372,6 +404,23 @@ namespace MahaleSystem.Repository.Implementation
 
             return t;
         }
+        public void DeleteImage(int idImg)
+        {
+            ImagesManahel img = context.ImagesManahels.Where(a => a.Id == idImg).FirstOrDefault();
+            try
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                var path = System.IO.Path.Combine(Directory.GetCurrentDirectory(), uploadsFolder, img.ImagesString);
+
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+            }
+            catch { }
+            context.ImagesManahels.Remove(img);
+            context.SaveChanges();
+        }
         public void DeleteManhalImages(int idManhal)
         {
             var imgs = context.ImagesManahels.Where(a => a.ManahelId == idManhal).ToList();
@@ -393,12 +442,6 @@ namespace MahaleSystem.Repository.Implementation
                 catch { }
             }
         }
-
-        //public List<Tuple<string, double>> GetKhaliaCount(int id_Manahal)
-        //{
-
-        //    return list2;
-        //}
     }
    
 }

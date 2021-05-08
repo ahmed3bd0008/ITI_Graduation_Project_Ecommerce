@@ -18,6 +18,7 @@ namespace MahaleSystem.Repository.Interface
         public bool DeleteKhalia(int id_Khalia);
         public int AddImage(ImagesManahel item);
         public List<Khalias> GetKhaliases(int id_Manahal);
+        public List<Khalias> SearchQS(int id_Manahal, string txtSearch);
         public Khalias getOneKhalia(int id_Khalia);
         public List<ImagesManahel> GetImages(int id_Manahal);
         public List<InfoVM> calcKhalaiaLevel(int id_manahal);
@@ -26,6 +27,7 @@ namespace MahaleSystem.Repository.Interface
         public Tuple<List<InfoVM>[], int> getStatistics(int id_manahal);
         public int GetKhlaiaStatistics(int id_khalia);
         public Tuple<List<InfoVM>[], int> GetStatisticForManahalList(List<Manahel> manahels);
+        public void DeleteImage(int idImg);
         public void DeleteManhalImages(int idManhal);
     }
 }

@@ -1,0 +1,70 @@
+﻿@model MahaleSystem.Models.Product
+
+
+<style>
+    .spanInfo {
+        border: 1px solid #000;
+        margin-left: 5px;
+        padding: 2px 5px;
+        display:block;
+    }
+</style>
+<br />
+<div class="row">
+    <div class="col-lg-4">
+        <div class="portfolio-info">
+            <h3>product information</h3>
+            <ul>
+                @{ string dte = Model.DatePick.ToShortDateString();}
+                <li>
+                    <strong>product name:</strong>
+                    <span class="spanInfo">@Model.ProductName</span>
+                </li>
+                <li>
+                    <strong>product price:</strong>
+                    <span class="spanInfo">@Model.Manhal.NickName</span>
+                </li>
+                <li>
+                    <strong>product description: </strong>
+                    <span class="spanInfo">@Model.Description</span>
+                </li>
+                <li>
+                    <strong>Flower Name:</strong>
+                    <span class="spanInfo">@Model.FlowerName</span>
+                </li>
+                <li>
+                    <strong>Date of Production:</strong>
+                    <span class="spanInfo">@dte</span>
+                </li>
+                <li>
+                    <strong>Quantity:</strong>
+                    <span class="spanInfo">@Model.ProductAmount @Model.Containter</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card-columns" id="divImages">
+            @foreach (var item in Model.ImageProducts)
+            {
+                try
+                {
+                    var img_String = "";
+                    img_String = item.ImagesString;
+                    if (img_String != null)
+                    {
+                        img_String = "../../images/" + img_String;
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img class="card-img" src=@img_String />
+                                <a asp-action="DeleteImage" asp-route-idImg="@item.Id" asp-route-idProduct="@item.ProductId" class="card-action">حذف</a>
+                            </div>
+                        </div>
+                    }
+                }
+                catch { }
+
+            }
+        </div>
+    </div>
+</div>

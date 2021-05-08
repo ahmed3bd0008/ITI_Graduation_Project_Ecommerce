@@ -7,8 +7,8 @@
 <button id="btn1" class="btn btn-info" style="margin:10px" value="Show">إخفاء التفاصيل</button>
 <div id="info">
     @await Component.InvokeAsync("DisplayStatistics", Model.manhal.Id)
+    @await Component.InvokeAsync("DisplayProductStatistics", Model.manhal.Id);
 </div>
-
 <!-- Row -->
 <button id="btn2" class="btn btn-info" style="margin:10px" value="Show">إخفاء البحث</button>
 <div class="row row-sm" id="search">
@@ -88,7 +88,7 @@
                 </a>
                 <div class="dropdown-menu tx-13">
                     <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
-                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="مخصبة">
+                       asp-route-id="@Model.manhal.Id" asp-route-txtSearch="ملقحة">
                         ملقحة
                     </a>
                     <a class="dropdown-item" asp-action="SearchStatus" asp-controller="Manahels"
@@ -226,7 +226,7 @@
         <div class="card">
             <div class="card-body text-center">
                 <img class="card-img" src="~/images/@item.ImagesString" />
-                <a asp-action="DeleteImage" asp-route-idImg="@item.Id" class="card-action">حذف</a>
+                <a asp-action="DeleteImage" asp-route-idImg="@item.Id" asp-route-id="@item.ManahelId" class="card-action">حذف</a>
             </div>
         </div>
     }
