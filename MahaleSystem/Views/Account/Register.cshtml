@@ -1,4 +1,7 @@
 ﻿@model DisplayUserViewModel
+@{ 
+    String userid=null;
+}
 <div class="row mt-4">
 </div>
 <div class="row">
@@ -17,24 +20,25 @@
                                             <th class="wd-25p sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;" aria-label="Position: activate to sort column descending" aria-sort="ascending">Phone number</th>
                                             <th class="wd-20p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;" aria-label="Office: activate to sort column ascending">Image</th>
                                             <th class="wd-15p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;" aria-label="data: activate to sort column ascending">Mange user</th>
-                                            <th class="wd-20p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;" aria-label="Salary: activate to sort column ascending">Edit user</th>
                                             <th class="wd-20p sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;" aria-label="Salary: activate to sort column ascending">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model.users)
                                         {
-                                        <tr role="row" class="even">
-                                            <td tabindex="0" class="">@item.UserName</td>
-                                            <td class="sorting_1">@item.PhoneNumber</td>
-                                            <td class=""><img style="width:20px;" src="~/Images/@item.Image" /></td>
-                                            <td><a class="btn btn-warning" asp-route-id="@item.Id" asp-action="ShowMangeUser" asp-controller="Administration">Mange user</a></td>
-                                            <td><a class="btn btn-light"asp-route-id="@item.Id">Edit user</a></td>
-                                            <td ><a class="btn btn-danger"asp-route-id="@item.Id">delete user</a></td>
-                                        </tr>
+                                            <tr role="row" class="even">
+                                                <td tabindex="0" class="">@item.UserName</td>
+                                                <td class="sorting_1">@item.PhoneNumber</td>
+                                                <td class=""><img style="width:20px;" src="~/Images/@item.Image" /></td>
+                                                <td><a class="btn btn-warning" asp-route-id="@item.Id" asp-action="ShowMangeUser" asp-controller="Administration">Mange user</a></td>
+                                                <td>
+                                                    <button class="btn btn-danger" data-target="#DeleteUser" data-toggle="modal"> حذف المستخدم</button>
+                                                    @{ 
+                                                        userid = item.Id;
+                                                    }
+                                                </td>
+                                            </tr>
                                         }
-
-                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -63,21 +67,42 @@
         </div>
     </div>
 </div>
+<div class="modal" id="DeleteUser">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">حذف المستخدم</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+
+
+                <p>هل انت متاكد من انك تريد حذف  هذال المستخدم</p>
+
+               
+            </div>
+            <form asp-action="DeleteUser"asp-controller="Administration" method="post">
+                <div class="modal-footer">
+                    <button class="btn ripple btn-primary" type="submit" asp-action="DeleteUser" asp-controller="Administration" asp-route-id="@userid">حذف المستخدم</button>
+                    <button  class="btn ripple btn-secondary" data-dismiss="modal" type="button">إغلاق</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- End Basic modal -->
 <script>
-    openAddUser = (title)=>
-    {
+    openAddUser = (title) => {
         $.ajax(
             {
-                type:'get',
-                url:'AddUser',
-                success: function (res)
-                {
+                type: 'get',
+                url: 'AddUser',
+                success: function (res) {
                     $('#addUser .modal-body').html(res);
                     $('#addUser .modal-title').html(title);
                     $('#addUser').modal("show");
                 }
             });
-    
+
     }
 </script>

@@ -12,6 +12,7 @@ namespace MahaleSystem.ViewModel.Administration
             Claims = new();
         }
         public String Id { get; set; }
+        public String UserName { get; set; }
         public String  Roles { get; set; }
         public List<string> Claims { get; set; }
     }

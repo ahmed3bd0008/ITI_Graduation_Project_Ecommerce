@@ -20,7 +20,7 @@ namespace MahaleSystem.Views.Shared.Components
         }
         #pragma warning restore 1998
 #nullable restore
-#line 10 "D:\ITI\ITI_Project\ITI_Graduation_Project_Ecommerce\MahaleSystem\Views\Shared\Components\FirstBlazor.razor"
+#line 10 "E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\Views\Shared\Components\FirstBlazor.razor"
        
     //[Parameter]
     //public string Data { get; set; } = string.Empty;

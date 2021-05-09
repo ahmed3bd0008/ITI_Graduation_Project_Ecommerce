@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MahaleSystem.Controllers
 {
@@ -40,6 +41,8 @@ namespace MahaleSystem.Controllers
         }
         public IActionResult login()
         {
+
+          ViewBag.ReturnUrl=  Request.Query["ReturnUrl"].ToString();
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace MahaleSystem.Controllers
                     {
                         return LocalRedirect(ReturnUrl);
                     }
-                    return RedirectToAction("Register", "Account");
+                    return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError(string.Empty, "invaild");
             }
@@ -75,6 +78,7 @@ namespace MahaleSystem.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "addUser")]
         public IActionResult AddUser()
         {
             return View();
@@ -115,12 +119,16 @@ namespace MahaleSystem.Controllers
             }
             return View();
         }
-        [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Logout()
+        {
+            //used to sign out
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult AccessDenied()
         {
             return View();
         }
-        
     }
     
 }

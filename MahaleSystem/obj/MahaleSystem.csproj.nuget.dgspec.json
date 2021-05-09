@@ -1,25 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {}
+    "E:\\ITIProject\\New folder\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {}
   },
   "projects": {
-    "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {
+    "E:\\ITIProject\\New folder\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+        "projectUniqueName": "E:\\ITIProject\\New folder\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
         "projectName": "MahaleSystem",
-        "projectPath": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
-        "packagesPath": "C:\\Users\\hp-\\.nuget\\packages\\",
-        "outputPath": "D:\\ITI\\ITI_Project\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\obj\\",
+        "projectPath": "E:\\ITIProject\\New folder\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
+        "packagesPath": "C:\\Users\\Sayed\\.nuget\\packages\\",
+        "outputPath": "E:\\ITIProject\\New folder\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\hp-\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Sayed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
