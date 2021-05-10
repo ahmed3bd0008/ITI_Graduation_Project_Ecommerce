@@ -399,3 +399,8 @@ E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug
 E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.pdb
 E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\MahaleSystem.genruntimeconfig.cache
 E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Account\AccessDenied.cshtml.g.cs
+E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Administration\EditUserProfile.cshtml.g.cs
+E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Administration\UseChangePasswordwithCurrentpaswword.cshtml.g.cs
+E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\obj\Debug\net5.0\Razor\Views\Administration\userChangeUserName.cshtml.g.cs
+E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\bin\Debug\net5.0\DocumentFormat.OpenXml.dll
+E:\ITIProject\New folder\ITI_Graduation_Project_Ecommerce\MahaleSystem\bin\Debug\net5.0\System.IO.Packaging.dll

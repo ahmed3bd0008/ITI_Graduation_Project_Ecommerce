@@ -1,0 +1,136 @@
+﻿@model UserProfileviewmodel
+@{
+    string id = Model.Id;
+}
+<div class=" custom-card">
+    <div class="card-header">
+        <h4> User  @Model.UserName</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-8">
+                <button data-target="#changeUserName" data-toggle="modal" onclick="openGetChangeNameView('@id')">change User name</button>
+                <button data-target="#changeUserPassword" data-toggle="modal" onclick="openGetChangePasswordView('@id')"> change Password</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class=" custom-card">
+    <div class="card-body">
+        <div class="row">
+
+            <div class="col-8">
+                <h3> <span class="badge badge-dark">what can this user  do</span></h3>
+                @foreach (var item in Model.UserClaims)
+                {
+                    <h4> <span class="badge badge-dark">@item</span></h4>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="changePassword">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-demo" id="changePasswordDiv">
+        </div>
+    </div>
+</div>
+<div class="modal" id="changeUserName1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Large Modal</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="userNamediv">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="changeUserName">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Basic Modal</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-controller="Administration" asp-action="userChangeUserName">
+                    <div class="form-group">
+                        <label>اسم المستخدم</label>
+                        <input type="text" name="UserName" class="form-control" />
+                        <input type="hidden" name="Id" value="@id" class="form-control" />
+                        <label>كلمه السر</label>
+                        <input type="text" name="Password" class="form-control" />
+                    </div>
+                    @*<div class="form-group">
+                            <label></label>
+                            <input type="password" class="form-control" />
+                        </div>*@
+                    <button class="btn ripple btn-primary" type="submit">Save changes</button>
+                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="changeUserPassword">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content modal-content-demo">
+            <div class="modal-header">
+                <h6 class="modal-title">Basic Modal</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" asp-controller="Administration" asp-action="UserChangePassword">
+                    <div class="form-group">
+                        <label>كلمه السر القديمه</label>
+                        <input type="password" name="OldPassword" class="form-control" />
+                        <input type="hidden" name="Id" value="@id" class="form-control" />
+                        <label>كلمه السر الجديده</label>
+                        <input type="password" name="NewPassword" class="form-control" />
+                        <label>كلمه السر الجديده</label>
+                        <input type="password" name="ConfarmnewPassword" class="form-control" />
+                    </div>
+                    @*<div class="form-group">
+                <label></label>
+                <input type="password" class="form-control" />
+            </div>*@
+                    <button class="btn ripple btn-primary" type="submit">Save changes</button>
+                    <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+    openGetChangePasswordView = (id) => {
+        $.ajax(
+            {
+                type: 'get',
+                url: '/Administration/UseChangePasswordwithCurrentpaswword',
+                data: { "id": id },
+                success: function (res) {
+                    $('#changePasswordDiv').html(res);
+                    $('#changePasswordDiv').modal("show");
+                }
+            });
+
+    }
+    openGetChangeNameView = (id) => {
+        $.ajax(
+            {
+                type: 'get',
+                url: '/Administration/userChangeUserName',
+                data: { "id": id },
+                success: function (res) {
+                    $('#userNamediv').html(res);
+                    $('#userNamediv').modal("show");
+                }
+            });
+
+    }
+
+</script>

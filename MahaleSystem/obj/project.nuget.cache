@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zPbm8Xm4ZofjvGkHBEbzP2WGbaYARgZblvVN/BtZRbGByCuZGfI/UFtbN79EWjbD6utjiw/TmUVXGeekoZSmww==",
+  "dgSpecHash": "KWn5ItImYL7XFZhC/f+vvh2O+X6A/leb/0J/vNR8cpNhP4Cv9wHdPUA03AeGgZJZPgN4DZecFKpPVRVxUZsOTg==",
   "success": true,
   "projectFilePath": "E:\\ITIProject\\New folder\\ITI_Graduation_Project_Ecommerce\\MahaleSystem\\MahaleSystem.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Sayed\\.nuget\\packages\\documentformat.openxml\\2.12.3\\documentformat.openxml.2.12.3.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.5\\microsoft.aspnetcore.authorization.5.0.5.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\microsoft.aspnetcore.components\\5.0.5\\microsoft.aspnetcore.components.5.0.5.nupkg.sha512",
@@ -91,6 +92,7 @@
     "C:\\Users\\Sayed\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\Sayed\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Sayed\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",

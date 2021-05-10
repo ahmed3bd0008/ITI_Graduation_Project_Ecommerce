@@ -1,4 +1,5 @@
-﻿using MahaleSystem.Models.Identity;
+﻿using DocumentFormat.OpenXml.InkML;
+using MahaleSystem.Models.Identity;
 using MahaleSystem.ViewModel.Administration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -129,6 +130,47 @@ namespace MahaleSystem.Controllers
             if (res.Succeeded) return RedirectToAction("Register", "Account");
             return View("Error");
         }
+        [HttpGet]
+        public async Task< IActionResult> EditUserProfile(String username)
+        {
+            if (User == null) return View("Error");
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null) return View("Error");
+            UserProfileviewmodel model = new UserProfileviewmodel()
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+            };
+              var claims =await _userManager.GetClaimsAsync(user);
+            model.UserClaims = claims.Select(e => e.Value).ToList();
+            return View(model);
+        }
+        [HttpPost]
+        public async Task< IActionResult> userChangeUserName([Bind(include: "Id,UserName,Password")]UserChangeUserNameViewModel model)
+        {
+            if (model.Id == null) return View("Error");
+            if (model.Password == null) return RedirectToAction("EditUserProfile",new { username =model.UserName});
+            if (model.UserName == null) return RedirectToAction("EditUserProfile",new { username = model.UserName });
+            //var existinguUser = _userManager.FindByNameAsync(model.UserName);
+            //if (existinguUser != null) return RedirectPreserveMethod("EditUserProfile");
+            var user =await _userManager.FindByIdAsync(model.Id);
+            user.UserName = model.UserName;
+            if (user== null) return RedirectToAction("EditUserProfile", new { username = model.UserName });
+            var res =await _userManager.UpdateAsync(user);
+            return RedirectToAction("EditUserProfile", new { username = model.UserName });
+        }
+        [HttpPost]
+        public async Task<IActionResult> UserChangePassword([Bind(include: "Id,OldPassword,NewPassword,ConfarmnewPassword")] userChangePasswordviewmodel model)
+        {
+            if (model.Id == null) return View("Error");
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (model.OldPassword == null) return RedirectToAction("EditUserProfile", new { username = user.UserName });
+            if (model.NewPassword == null) return RedirectToAction("EditUserProfile", new { username = user.UserName });
+            if (user == null) return RedirectToAction("EditUserProfile", new { username = user.UserName });
+            var res =await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            if (res.Succeeded) return RedirectToAction("EditUserProfile", new { username = user.UserName });
+            return RedirectToAction("EditUserProfile", new { username = user.UserName });
 
+        }
     }
 }
