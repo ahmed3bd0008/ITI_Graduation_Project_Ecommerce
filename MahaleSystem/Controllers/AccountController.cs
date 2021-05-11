@@ -107,7 +107,7 @@ namespace MahaleSystem.Controllers
                     var result = await _userManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                        if (_signInManager.IsSignedIn(User) && User.IsInRole("SuperAdmin"))
+                        if (_signInManager.IsSignedIn(User))
                         {
                             return RedirectToAction("AddUser", "Account");
                         }
