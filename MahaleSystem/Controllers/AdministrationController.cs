@@ -34,7 +34,7 @@ namespace MahaleSystem.Controllers
                     Id = Id,
                     UserName = user.UserName,
                     Roles = Role.FirstOrDefault(),
-                    Claims = claims.Select(e => e.Type).ToList()
+                    Claims = claims.Select(e => e.Value).ToList()
                 };
                 return View(model);
             }
@@ -56,6 +56,7 @@ namespace MahaleSystem.Controllers
                     cusrtomClaims.IsSelected = true;
                 }
                 cusrtomClaims.ClaimsType = item.Type;
+                cusrtomClaims.ClaimsValue = item.Value;
                 Claims.Claimsuser.Add(cusrtomClaims);
             }
             return View(Claims);
@@ -73,7 +74,7 @@ namespace MahaleSystem.Controllers
                 {
                     if (item.IsSelected)
                     {
-                        await _userManager.AddClaimAsync(user, new Claim(item.ClaimsType, item.ClaimsType));
+                        await _userManager.AddClaimAsync(user, new Claim(item.ClaimsType, item.ClaimsValue));
                     }
 
                 }

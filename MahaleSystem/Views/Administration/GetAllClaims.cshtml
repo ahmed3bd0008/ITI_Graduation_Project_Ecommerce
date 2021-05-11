@@ -14,8 +14,9 @@
                 {
                     <input type="hidden" asp-for="@Model.UserId"/>
                     <div class="form-control row">
-                        <label class="col-3" asp-for="@Model.Claimsuser[i].IsSelected"> @Model.Claimsuser[i].ClaimsType </label>
+                        <label class="col-3" asp-for="@Model.Claimsuser[i].IsSelected"> @Model.Claimsuser[i].ClaimsValue </label>
                         <input class="col-3" type="checkbox" asp-for="@Model.Claimsuser[i].IsSelected" />
+                        <input type="hidden" asp-for="@Model.Claimsuser[i].ClaimsValue" />
                         <input type="hidden" asp-for="@Model.Claimsuser[i].ClaimsType" />
 
                         <br />

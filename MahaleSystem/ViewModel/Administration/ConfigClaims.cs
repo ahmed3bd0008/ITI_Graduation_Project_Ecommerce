@@ -27,7 +27,7 @@ namespace MahaleSystem.ViewModel.Administration
                 new Claim("EditUser", "تعديل المستخدم"),
                 new Claim("DeleteUser", "حذف المستخدم"),
                 new Claim("MangeClaims", "أضافه الصلاحيات"),
-                new Claim("UserMangment","Y]hvi hglsjo]ldk")
+                new Claim("UserMangment","أداره المستخدمين")
 
             };
        

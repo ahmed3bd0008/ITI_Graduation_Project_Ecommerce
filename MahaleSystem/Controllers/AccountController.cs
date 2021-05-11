@@ -107,6 +107,10 @@ namespace MahaleSystem.Controllers
                     var result = await _userManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
+                        if (_signInManager.IsSignedIn(User) && User.IsInRole("SuperAdmin"))
+                        {
+                            return RedirectToAction("AddUser", "Account");
+                        }
                         await _signInManager.SignInAsync(user, isPersistent: false);
 
                     }
@@ -123,7 +127,7 @@ namespace MahaleSystem.Controllers
         {
             //used to sign out
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("login", "Account");
         }
         public IActionResult AccessDenied()
         {
