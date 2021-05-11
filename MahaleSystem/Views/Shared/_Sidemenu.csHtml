@@ -1,4 +1,7 @@
 ﻿<!-- Sidemenu -->
+@using Microsoft.AspNetCore.Authorization;
+@inject IAuthorizationService AuthorizationService
+
 <div class="main-sidebar main-sidebar-sticky side-menu">
     <div class="sidemenu-logo">
         <a class="main-logo" href="index.html">
@@ -37,9 +40,12 @@
                     <li class="nav-sub-item">
                         <a class="nav-sub-link text-secondary" asp-controller="Account" asp-action="AddUser">AddUser</a>
                     </li>
-                    <li class="nav-sub-item">
-                        <a class="nav-sub-link text-secondary" asp-controller="account" asp-action="Register">Usersmange</a>
-                    </li>
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "userMangment")).Succeeded)
+                    {
+                        <li class="nav-sub-item">
+                            <a class="nav-sub-link text-secondary" asp-controller="account" asp-action="Register">Usersmange</a>
+                        </li>
+                   }
                     <li class="nav-sub-item">
                         <a class="nav-sub-link text-secondary" asp-controller="Account" asp-action="Login">Usersmange</a>
                     </li>

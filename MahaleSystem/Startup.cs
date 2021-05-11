@@ -73,9 +73,19 @@ namespace MahaleSystem
                 option.AddPolicy("deleteManhale", police => police.RequireAssertion(context =>
                    context.User.IsInRole("SuperAdmin") || context.User.HasClaim(claim => claim.Type == "DeleteManhale")));
 
-                option.AddPolicy("addproduct", police => police.RequireAssertion(context
+                option.AddPolicy("addKhalia", police => police.RequireAssertion(context
                    => context.User.IsInRole("SuperAdmin") ||
-                  context.User.HasClaim(claim => claim.Type == "Addproduct")));
+                  context.User.HasClaim(claim => claim.Type == "AddKhalia")));
+
+                option.AddPolicy("editKhalia", police => police.RequireAssertion(context =>
+                      context.User.IsInRole("SuperAdmin") ||
+                      context.User.HasClaim(claims => claims.Type == "EditKhalia")));
+
+                option.AddPolicy("deleteKhalia", police => police.RequireAssertion(context =>
+                   context.User.IsInRole("SuperAdmin") || context.User.HasClaim(claim => claim.Type == "DeleteKhalia")));
+                option.AddPolicy("addproduct", police => police.RequireAssertion(context
+                  => context.User.IsInRole("SuperAdmin") ||
+                 context.User.HasClaim(claim => claim.Type == "Addproduct")));
 
                 option.AddPolicy("editProduct", police => police.RequireAssertion(context =>
                       context.User.IsInRole("SuperAdmin") ||
@@ -83,8 +93,11 @@ namespace MahaleSystem
 
                 option.AddPolicy("deleteProduct", police => police.RequireAssertion(context =>
                    context.User.IsInRole("SuperAdmin") || context.User.HasClaim(claim => claim.Type == "DeleteProduct")));
+                option.AddPolicy("userMangment", police => police.RequireAssertion(context =>
+                 context.User.IsInRole("SuperAdmin") || context.User.HasClaim(claim => claim.Type == "UserMangment")));
             });
-           // services.AddControllersWithViews().AddRazorRuntimeCompilation();
+           
+            // services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
             services.AddScoped(typeof(ImanahelRepository), typeof(manahelRepository));
             services.AddScoped(typeof(IUsersManhalRepositry), typeof(UsersManhalRepositry));

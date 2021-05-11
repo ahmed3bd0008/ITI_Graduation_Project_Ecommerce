@@ -17,13 +17,17 @@ namespace MahaleSystem.ViewModel.Administration
                 new Claim("AddManhale", "اضافه المنحل"),
                 new Claim("EditManhale", "تعديل المنحل"),
                 new Claim("DeleteManhale", "حذف المنحل"),
+                new Claim("AddKhalia", "اضافه الخلية"),
+                new Claim("EditKhalia", "تعديل الخلية"),
+                new Claim("DeleteKhalia", "حذف الخلية"),
                 new Claim("AddProduct", "أضافه المنتج"),
                 new Claim("EditProduct", "تعديد المنتج"),
                 new Claim("DeleteProduct", "حذف المنتج"),
                 new Claim("AddUser", "اضافه مستخدم"),
                 new Claim("EditUser", "تعديل المستخدم"),
                 new Claim("DeleteUser", "حذف المستخدم"),
-                new Claim("MangeClaims", "أضافه الصلاحيات")
+                new Claim("MangeClaims", "أضافه الصلاحيات"),
+                new Claim("UserMangment","Y]hvi hglsjo]ldk")
 
             };
        
